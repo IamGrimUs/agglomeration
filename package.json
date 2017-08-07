@@ -1,0 +1,20 @@
+{
+  "name": "agglomeration",
+  "version": "1.0.0",
+  "description": "To create a sense of connectedness within a remote group of users. ",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IamGrimUs/agglomeration.git"
+  },
+  "author": "r_doubel_l",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IamGrimUs/agglomeration/issues"
+  },
+  "homepage": "https://github.com/IamGrimUs/agglomeration#readme"
+}
