@@ -57,10 +57,25 @@ body {
   background-color: #f3f3f3;
   font-family: 'Open Sans', sans-serif;
   line-height: 1.25;
+  padding-bottom:4em;
+}
+
+.text-center {
+  text-align: center;
 }
 
 img {
   width: 100%;
+}
+
+.applied-filter-list {
+  font-size: 1em;
+  color: #333333;
+  text-align:right;
+  margin: 0 auto;
+  max-width: 98%;
+  padding-top: 1em;
+  padding-right: .5em;
 }
 
 .wrapper-0 {
@@ -79,8 +94,8 @@ img {
 .wrapper-1 {
   display: grid;
   grid-template-columns: 1fr;
-  grid-column-gap: 2px;
-  grid-row-gap: 2px;
+  grid-column-gap: 4px;
+  grid-row-gap: 2em;
 }
 
 @media screen and (min-width:500px){
@@ -122,14 +137,21 @@ img {
 .menu-button-container {
   margin: 1em 0;
 }
-.profile-container {
+
+.profile-card {
   line-height: 1.25;
   cursor: pointer;
   transition: all .5s ease;
 }
+
+.profile-card p {
+  font-family: 'Raleway', sans-serif;
+}
+
 /**
  * Menu overview.
  */
+
 .c-menu {
   position: fixed;
   z-index: 900;
@@ -325,10 +347,6 @@ body.has-active-menu {
   BUTTONS
 
 ----------------------------------------------------------------------------- */
-.c-button-container {
-  border-bottom:1px solid #666666
-}
-
 .c-button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -336,7 +354,7 @@ body.has-active-menu {
   background: none;
   border: none;
   box-shadow: none;
-  color:  #e36d25;
+  color:  #333;
   cursor: pointer;
 }
 
@@ -354,49 +372,138 @@ body.has-active-menu {
   CHECKBOX
 
 ----------------------------------------------------------------------------- */
-.department-title {
-  font-size: 1.25em;
-  margin-left: .5em;
-}
-
 /* input[type=checkbox] {
 	visibility: hidden;
 } */
 
+
+
+
+
+
+
+
+
 /* -----------------------------------------------------------------------------
 
-  User-Cards
+  Profile-Cards
 
 ----------------------------------------------------------------------------- */
-.profile-container {
-  border:1px solid #31839a;
+.account-team {
+  border: 1px solid #77923d;
+  background-color: #77923d;
+}
+
+body.campaign-team {
+  background-color: #cf2347;
+}
+
+body.creative-team {
   background-color: #31839a;
 }
 
-.profile-container p {
-  color: #ffffff;
+body.dev-team {
+  background-color: #e36d25;
 }
 
-.profile-container p:last-child {
-  margin-top: .25em;
+body.labs-team {
+  background-color: #666666;
 }
 
-.profile-container figcaption {
-  padding: .5em 1em .75em
+body.leadership-team {
+  background-color: #999999;
 }
 
-img {
-  margin:0;
-  padding:0;
+body.strategy-team {
+  background-color: #6a5584;
 }
 
-figcaption {
-  margin:0;
+body.tech-team {
+  background-color: #31839a;
+}
+
+div.account-team {
+  border: 1px solid #77923d;
+  background-color: #77923d;
+}
+
+div.campaign-team {
+  border: 1px solid #cf2347;
+  background-color: #cf2347;
+}
+
+div.creative-team {
+  border: 1px solid #31839a;
+  background-color: #31839a;
+}
+
+div.dev-team {
+  border: 1px solid #e36d25;
+  background-color: #e36d25;
+}
+
+div.labs-team {
+  border: 1px solid #666666;
+  background-color: #666666;
+}
+
+div.leadership-team {
+  border: 1px solid #999999;
+  background-color: #999999;
+}
+
+div.strategy-team {
+  border: 1px solid #6a5584;
+  background-color: #6a5584;
+}
+
+div.tech-team {
+  border: 1px solid #31839a;
+  background-color: #31839a;
+}
+
+figure.account-team {
+  border: 2px solid #77923d;
+}
+
+figure.campaign-team {
+  border: 2px solid #cf2347;
+}
+
+figure.creative-team {
+  border: 2px solid #31839a;
+}
+
+figure.dev-team {
+  border: 2px solid #e36d25;
+}
+
+figure.labs-team {
+  border: 2px solid #666666;
+}
+
+figure.leadership-team {
+  border: 2px solid #999999;
+}
+
+figure.strategy-team {
+  border: 2px solid #6a5584;
+}
+
+figure.tech-team {
+  border: 2px solid #31839a;
+}
+
+.profile-card {
+  position:relative;
+  overflow:hidden;
+  float:left;
 }
 
 .front-page-name {
   font-size: 1.25em;
   letter-spacing: 1px;
+  font-weight: 700;
 }
 
 .front-page-title {
@@ -404,6 +511,96 @@ figcaption {
   font-size: 1em;
   letter-spacing: 1.5px;
 }
+
+.profile-card figure {
+  margin:0;
+  padding:0;
+  position:relative;
+  cursor:pointer;
+}
+
+.profile-card figure img {
+   display:block;
+   position:relative;
+   z-index:10;
+}
+
+.profile-card figure figcaption {
+   display:block;
+   position:absolute;
+   z-index:5;
+}
+
+.profile-card figure figcaption {
+   top:0;
+   left:0;
+   width:100%;
+   height:100%;
+   text-align:center;
+   backface-visibility:hidden;
+   -webkit-transform:rotateY(-180deg);
+   -moz-transform:rotateY(-180deg);
+   transform:rotateY(-180deg);
+   -webkit-transition:all .5s;
+   -moz-transition:all .5s;
+   transition:all .5s
+}
+
+.profile-card figure img {
+   backface-visibility: hidden;
+   -webkit-transition: all .5s;
+   -moz-transition: all .5s;
+   transition: all .5s
+}
+
+.profile-card figure:hover img, figure.hover img {
+   -webkit-transform: rotateY(180deg);
+   -moz-transform: rotateY(180deg);
+   transform: rotateY(180deg)
+}
+
+.profile-card figure:hover figcaption, figure.hover figcaption {
+   -webkit-transform: rotateY(0);
+   -moz-transform: rotateY(0);
+   transform: rotateY(0)
+}
+
+.profile-card div {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+}
+
+.profile-card h2, .profile-card p, .profile-card a  {
+  text-align: center;
+  color: #ffffff;
+}
+
+.profile-card h2 {
+  font-size: 1.5em;
+  
+}
+
+.profile-card p, .profile-card a {
+  font-size: 1.25em;
+  margin-top: .25em;
+  font-family: 'Raleway', sans-serif;
+}
+
+.profile-card figcaption a {
+  display: block;
+  text-decoration: none;
+}
+
+.profile-card figcaption p:last-child {
+  margin-top: 2em;
+}
+
+
+
+
+
+
 
 .profile-menu {
   color: #fff;
@@ -417,21 +614,39 @@ figcaption {
 .profile-menu a {
   color: #fff;
   text-decoration: none;
-  display:inline-block;
+  display: inline-block;
   width: 100%;
   padding: .75em 1em;
 }
 .profile-menu a:hover {
-  color:  #e36d25;
   color: #77923d;
 }
+
+
+
+
+
 /* -----------------------------------------------------------------------------
 
   profile page
 
 ----------------------------------------------------------------------------- */
-.profile-header {
-  margin: 2em 0;
+.profile-border {
+  margin: 0 auto;
+  max-width: 800px;
+  height: 100%;
+  padding-top: 2em;
+  padding-bottom: 4em;
+  background-color: #fff;
+  border-left: 1px solid #6a5584;
+  border-right: 1px solid #695584;
+  border-bottom: 1px solid #6a5584;
+}
+
+@media screen and (min-width: 600px) {
+  .profile-border {
+    padding-bottom: 6em;
+  }
 }
 
 .profile-pic-container {
@@ -439,7 +654,6 @@ figcaption {
   height: 250px;
   border-radius: 50%;
   margin: 0 auto;
-  border: 2px solid #e36d25
 }
 
 .profile-pic {
@@ -447,9 +661,6 @@ figcaption {
 }
 
 .profile-information {
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
   text-align: left;
 }
 
@@ -457,79 +668,129 @@ figcaption {
   text-align: center;
   color: #333;
   font-weight: 700;
-  font-size: 3em;
+  margin-top: .5em;
+  margin-bottom: .15em;
+  font-size: 2.25em;
 }
 
 .profile-information h2 {
   text-align: center;
+  font-family: 'Raleway', sans-serif;
   color: #333;
   font-size: 1.75em;
   margin-bottom: .25em;
 }
 
-.profile-information p, 
-.profile-information a  {
-  margin: .25em 0;
-}
-
 .profile-information a  {
   color: #333;
   text-decoration: none;
-  border-bottom: 2px solid #f3f3f3;
+  border-bottom: 2px solid #ffffff;
   padding-bottom: .25em;
 }
 
 .profile-information a:hover  {
-  border-bottom: 2px solid #333;
-  padding-bottom: .25em;
-  color: #333; 
+  border-bottom: 2px solid #77923d;
+  color: #77923d; 
 }
 
 .contact-information-layout {
-  margin-top: 3em;
-  font-size: 1em;
-}
-
-.contact-information-layout p {
-  margin-top: 1em;
-}
-
-.contact-info {
-  width: 100%;
-  padding: 1em;
-}
-
-.company-info {
-  width: 100%;
-  padding: 1em;
+  font-size: 1.25em;
+  padding: 1em 0 2em 0;
 }
 
 @media screen and (min-width: 600px) {
   .contact-information-layout {
     display: flex;
+    flex-wrap: wrap;
+    margin-top: 3em;
+    padding: 1em 2.5em 2em 4.5em;
   }
-  .contact-info {
+}
+
+.contact-information-layout div {
+  padding: 1em;
+}
+
+.contact-information-layout div:last-child {
+  margin-top: 1.5em;
+}
+
+@media screen and (min-width: 600px) {
+  .contact-information-layout div:last-child {
+    margin-top: 3em;
+    margin-left: -3.5em;
+    margin-right: -2.5em
+  }
+}
+
+.contact-information-layout div:last-child .profile-category-headline {
+  margin-bottom: 1em;
+}
+
+.contact-information-layout div:last-child p {
+  line-height: 1.5em;
+}
+
+@media screen and (min-width: 600px) {
+  .contact-information-layout div:nth-child(odd){
     width: 60%;
   }
-  .company-info {
+  .contact-information-layout div:nth-child(even){
     width: 40%;
   }
-}
-
-@media screen and (min-width: 800px) {
-  .contact-information-layout {
-    font-size: 1.25em;
+  .contact-information-layout div:last-child{
+    flex-grow: 2;
   }
 }
 
-.department-title-text {
-  font-weight: 700;
-  display:block;
-  margin-bottom:.5em;
+.contact-information-layout p {
+  margin-bottom: 2em;
+  font-family: 'Raleway', sans-serif;
 }
 
-.postition-title-text {
+.contact-information-layout p:last-child {
+  margin-bottom: 0;
+}
+
+.profile-category-headline {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
   font-weight: 700; 
-  display:block;
-  margin-bottom:.5em;
+  display: block;
+  margin-bottom: .25em;
+}
+
+/* -----------------------------------------------------------------------------
+
+  profile edit page
+
+----------------------------------------------------------------------------- */
+.profile-edit-form {
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.profile-edit-form div {
+  margin-top: 3em;
+}
+
+.profile-edit-form label {
+  font-weight: 700;
+  display: block;
+  margin-top: 2em;
+}
+
+.profile-edit-form input {
+  display: block;
+  margin-top: .5em;
+  padding: .75em .5em;
+  width: 60%;
+}
+
+.profile-edit-form textarea {
+  display: block;
+  margin-top: .5em;
+  padding: .75em .5em;
+  width: 90%;
 }
