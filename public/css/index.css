@@ -389,8 +389,7 @@ body.has-active-menu {
   Profile-Cards
 
 ----------------------------------------------------------------------------- */
-.account-team {
-  border: 1px solid #77923d;
+body.account-team {
   background-color: #77923d;
 }
 
@@ -399,19 +398,15 @@ body.campaign-team {
 }
 
 body.creative-team {
-  background-color: #31839a;
-}
-
-body.dev-team {
   background-color: #e36d25;
 }
 
 body.labs-team {
-  background-color: #666666;
+  background-color: #31839a;
 }
 
 body.leadership-team {
-  background-color: #999999;
+  background-color: #666666;
 }
 
 body.strategy-team {
@@ -419,7 +414,7 @@ body.strategy-team {
 }
 
 body.tech-team {
-  background-color: #31839a;
+  background-color: #999999;
 }
 
 div.account-team {
@@ -433,11 +428,6 @@ div.campaign-team {
 }
 
 div.creative-team {
-  border: 1px solid #31839a;
-  background-color: #31839a;
-}
-
-div.dev-team {
   border: 1px solid #e36d25;
   background-color: #e36d25;
 }
@@ -448,8 +438,8 @@ div.labs-team {
 }
 
 div.leadership-team {
-  border: 1px solid #999999;
-  background-color: #999999;
+  border: 1px solid #666666;
+  background-color: #666666;
 }
 
 div.strategy-team {

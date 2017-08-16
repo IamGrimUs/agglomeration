@@ -4,16 +4,17 @@ const userSchema = mongoose.Schema({
   firstName: {type: String, required: true},
   lastName: {type: String, required: true},
   email: {type: String, required: true},
-  departmentId: {type: String, required: false},
+  departmentId: {type: String},
   position: {type: String, required: true},
   managerId: {type: String, required: false},
-  state:  {type: String, required: true},
+  city: {type: String},
+  state: {type: String},
   country: {type: String, required: true},
-  dateHired: {type: Date, required: false},
-  favoritePartOfDay: {type: String, required: false},
-  permision: {type: String, required: true},
+  dateHired: {type: Date},
+  favoritePartOfDay: {type: String},
+  permission: {type: String, required: true},
   password: {type: String, required: true},
-  salt: {type: String, required: true}
+  salt: {type: String}
 });
 
 userSchema.virtual('fullName').get(function() {
@@ -30,6 +31,7 @@ userSchema.methods.toClient = function() {
     departmentId: this.departmentId,
     position: this.position,
     managerId: this.managerId,
+    city: this.city,
     state: this.state,
     country: this.country,
     dateHired: this.dateHired,
