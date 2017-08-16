@@ -1,5 +1,4 @@
 const userModel = require("./user.model");
-const bodyParser = require("body-parser");
 
 const findAllUsers = (req, res) => {
   userModel
@@ -75,7 +74,9 @@ const updateUserById = (req, res) => {
     "state",
     "country",
     "dateHired",
+    "personalityQuerks",
     "favoritePartOfDay",
+    "hobbies",
     "password"
   ];
 
@@ -92,7 +93,7 @@ const updateUserById = (req, res) => {
 };
 
 const deleteUserById = (req, res) => {
-  console.log(`this is the requested params id: `, req.params.id);
+  console.log(`this is the requested params id: `, req.params.userId);
   userModel
     .findByIdAndRemove({ _id: req.params.userId })
     .then(() => res.status(204).end())

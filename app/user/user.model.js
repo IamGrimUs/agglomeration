@@ -1,23 +1,25 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-  firstName: {type: String, required: true},
-  lastName: {type: String, required: true},
-  email: {type: String, required: true},
-  departmentId: {type: String},
-  position: {type: String, required: true},
-  managerId: {type: String, required: false},
-  city: {type: String},
-  state: {type: String},
-  country: {type: String, required: true},
-  dateHired: {type: Date},
-  favoritePartOfDay: {type: String},
-  permission: {type: String, required: true},
-  password: {type: String, required: true},
-  salt: {type: String}
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  email: { type: String, required: true },
+  departmentId: { type: String },
+  position: { type: String, required: true },
+  managerId: { type: String, required: false },
+  city: { type: String },
+  state: { type: String },
+  country: { type: String, required: true },
+  dateHired: { type: Date },
+  personalityQuerks: { type: String },
+  favoritePartOfDay: { type: String },
+  hobbies: { type: String },
+  permission: { type: String, required: true },
+  password: { type: String, required: true },
+  salt: { type: String }
 });
 
-userSchema.virtual('fullName').get(function() {
+userSchema.virtual("fullName").get(function() {
   return `${this.firstName} ${this.lastName}`.trim();
 });
 
@@ -37,8 +39,8 @@ userSchema.methods.toClient = function() {
     dateHired: this.dateHired,
     favoritePartOfDay: this.favoritePartOfDay
   };
-}
+};
 
-const user = mongoose.model('user', userSchema);
+const user = mongoose.model("user", userSchema);
 
 module.exports = user;
