@@ -27,6 +27,44 @@ const findUserById = (req, res) => {
     });
 };
 
+const searchUser = (req, res) => {
+  let query = {};
+  const departmentIds = JSON.parse(req.query.departmentIds);
+  const email = req.query.email;
+  const firstName = req.query.firstName;
+  const lastName = req.query.lastName;
+
+  if (departmentIds) {
+    query.departmentId = {
+      $in: departmentIds
+    };
+  }
+
+  if (email) {
+    query.email = email;
+  }
+
+  if (firstName) {
+    query.firstName = firstName;
+  }
+
+  if (lastName) {
+    query.lastName = lastName;
+  }
+
+  userModel
+    .find(query)
+    .then(users => {
+      res.json({
+        users: users.map(user => user.toClient())
+      });
+    })
+    .catch(err => {
+      console.error(err.message);
+      res.status(500).json({ message: "Internal server error" });
+    });
+};
+
 const createNewUser = (req, res) => {
   console.log(`hello`, req.body);
   userModel
@@ -34,6 +72,7 @@ const createNewUser = (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
+      telephone: req.body.telephone,
       departmentId: req.body.departmentId,
       position: req.body.position,
       managerId: req.body.managerId,
@@ -42,6 +81,7 @@ const createNewUser = (req, res) => {
       country: req.body.country,
       dateHired: req.body.dateHired,
       favoritePartOfDay: req.body.favoritePartofDay,
+      hobbies: req.body.hobbies,
       permission: req.body.permission,
       password: req.body.password
     })
@@ -104,6 +144,7 @@ module.exports = {
   createNewUser,
   findUserById,
   findAllUsers,
+  searchUser,
   updateUserById,
   deleteUserById
 };

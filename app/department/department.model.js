@@ -11,9 +11,9 @@ departmentSchema.methods.toClient = function() {
   return {
     id: this._id,
     name: this.name,
-    manager: this.managerId,
-    director: this.directorId,
-    vp: this.vpId
+    managerId: this.managerId,
+    directorId: this.directorId,
+    vpId: this.vpId
   };
 };
 

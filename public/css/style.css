@@ -130,6 +130,8 @@ table {
   border-spacing: 0;
 }
 
+/*_______________________universal_______________________*/
+
 * {
   box-sizing: border-box;
 }
@@ -147,16 +149,16 @@ body {
 
 img {
   width: 100%;
+  height: auto;
 }
 
+/*_______________________home page_______________________*/
 .applied-filter-list {
   font-size: 1em;
   color: #333333;
   text-align: right;
-  margin: 0 auto;
   max-width: 98%;
   padding-top: 1em;
-  padding-right: .5em;
 }
 
 .wrapper-0 {
@@ -177,6 +179,7 @@ img {
   grid-template-columns: 1fr;
   grid-column-gap: 4px;
   grid-row-gap: 2em;
+  align-items: end;
 }
 
 @media screen and (min-width: 500px) {
@@ -220,18 +223,103 @@ img {
 }
 
 .profile-card {
-  line-height: 1.25;
   cursor: pointer;
   transition: all .5s ease;
+  position: relative;
+  overflow: hidden;
+  float: left;
 }
 
-.profile-card p {
+.profile-card figure {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-card figure img {
+  display: block;
+  position: relative;
+  z-index: 10;
+}
+
+.profile-card figure figcaption {
+  display: block;
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  backface-visibility: hidden;
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  transition: all .5s;
+}
+
+.profile-card figure img {
+  backface-visibility: hidden;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  transition: all .5s;
+}
+
+.profile-card figure:hover img,
+figure.hover img {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.profile-card figure:hover figcaption,
+figure.hover figcaption {
+  -webkit-transform: rotateY(0);
+  -moz-transform: rotateY(0);
+  transform: rotateY(0);
+}
+
+.profile-card div {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.profile-card div p {
+  font-size: 1em;
+  margin-top: .5em;
+}
+
+.profile-card h2,
+.profile-card p,
+.profile-card a {
+  text-align: center;
+  color: #ffffff;
+}
+
+.profile-card h2 {
+  font-size: 1.5em;
+}
+
+.profile-card p,
+.profile-card a {
+  font-size: 1.25em;
+  margin-top: .25em;
   font-family: 'Raleway', sans-serif;
 }
 
-/**
- * Menu overview.
- */
+.profile-card figcaption a {
+  display: block;
+  text-decoration: none;
+}
+
+.profile-card figcaption p:last-child {
+  margin-top: 2em;
+}
+
+/*_______________________home page menu_______________________*/
 
 .c-menu {
   position: fixed;
@@ -240,12 +328,21 @@ img {
   transition: transform 0.5s;
 }
 
-.c-menu label {
+.profile-menu {
+  background-color: #333;
+  padding: 1em;
+}
+
+.profile-menu i {
+  display: inline-block;
+  margin-right: .5em;
+}
+
+.profile-menu a {
   display: inline-block;
   width: 100%;
-  padding: 1em 0;
-  font-family: 'Raleway', sans-serif;
-  letter-spacing: .5px;
+  color: #fff;
+  text-decoration: none;
 }
 
 .c-menu ul {
@@ -277,6 +374,14 @@ img {
   float: right;
 }
 
+.c-menu label {
+  display: inline-block;
+  width: 100%;
+  padding: 1em 0;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: .5px;
+}
+
 .navagation-section-header {
   padding: .5em 1em;
   padding-top: 1.5em;
@@ -292,9 +397,6 @@ img {
   padding-top: 1em;
 }
 
-/**
- * Close button resets.
- */
 .c-menu__close {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -308,26 +410,13 @@ img {
   text-align: right;
 }
 
-/**
- * Close button resets.
- */
 .c-menu__close:focus {
   outline: none;
 }
 
-/**
- * Body states.
- *
- * When a menu is active, we want to hide the overflows on the body to prevent
- * awkward document scrolling.
- */
 body.has-active-menu {
   overflow: hidden;
 }
-
-/**
- * Mask component
- */
 
 .c-mask {
   position: fixed;
@@ -413,21 +502,11 @@ body.has-active-menu {
   }
 }
 
-/* -----------------------------------------------------------------------------
-
-  WRAPPER OBJECT
-
------------------------------------------------------------------------------ */
 .o-wrapper {
   -webkit-transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
 }
 
-/* -----------------------------------------------------------------------------
-
-  BUTTONS
-
------------------------------------------------------------------------------ */
 .c-button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -448,20 +527,8 @@ body.has-active-menu {
   cursor: not-allowed;
 }
 
-/* -----------------------------------------------------------------------------
+/*_____department colors________*/
 
-  CHECKBOX
-
------------------------------------------------------------------------------ */
-/* input[type=checkbox] {
-	visibility: hidden;
-} */
-
-/* -----------------------------------------------------------------------------
-
-  Profile-Cards
-
------------------------------------------------------------------------------ */
 body.account-team {
   background-color: #77923d;
 }
@@ -483,15 +550,11 @@ body.operations-team {
 }
 
 body.quality-team {
-  background-color: #31839a;
+  background-color: #999999;
 }
 
 body.strategy-team {
   background-color: #6a5584;
-}
-
-body.tech-team {
-  background-color: #999999;
 }
 
 div.account-team {
@@ -510,8 +573,8 @@ div.creative-team {
 }
 
 div.labs-team {
-  border: 1px solid #666666;
-  background-color: #666666;
+  border: 1px solid #31839a;
+  background-color: #31839a;
 }
 
 div.operations-team {
@@ -520,8 +583,8 @@ div.operations-team {
 }
 
 div.quality-team {
-  border: 1px solid #31839a;
-  background-color: #31839a;
+  border: 1px solid #999999;
+  background-color: #999999;
 }
 
 div.strategy-team {
@@ -538,15 +601,11 @@ figure.campaign-team {
 }
 
 figure.creative-team {
-  border: 2px solid #31839a;
-}
-
-figure.dev-team {
   border: 2px solid #e36d25;
 }
 
 figure.labs-team {
-  border: 2px solid #666666;
+  border: 2px solid #31839a;
 }
 
 figure.operations-team {
@@ -554,141 +613,11 @@ figure.operations-team {
 }
 
 figure.quality-team {
-  border: 2px solid #31839a;
+  border: 2px solid #666666;
 }
 
 figure.strategy-team {
   border: 2px solid #6a5584;
-}
-
-figure.tech-team {
-  border: 2px solid #31839a;
-}
-
-.profile-card {
-  position: relative;
-  overflow: hidden;
-  float: left;
-}
-
-.front-page-name {
-  font-size: 1.25em;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-
-.front-page-title {
-  font-family: 'Raleway', sans-serif;
-  font-size: 1em;
-  letter-spacing: 1.5px;
-}
-
-.profile-card figure {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  cursor: pointer;
-}
-
-.profile-card figure img {
-  display: block;
-  position: relative;
-  z-index: 10;
-}
-
-.profile-card figure figcaption {
-  display: block;
-  position: absolute;
-  z-index: 5;
-}
-
-.profile-card figure figcaption {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  backface-visibility: hidden;
-  -webkit-transform: rotateY(-180deg);
-  -moz-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  transition: all .5s;
-}
-
-.profile-card figure img {
-  backface-visibility: hidden;
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  transition: all .5s;
-}
-
-.profile-card figure:hover img,
-figure.hover img {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-}
-
-.profile-card figure:hover figcaption,
-figure.hover figcaption {
-  -webkit-transform: rotateY(0);
-  -moz-transform: rotateY(0);
-  transform: rotateY(0);
-}
-
-.profile-card div {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 1em;
-}
-
-.profile-card h2,
-.profile-card p,
-.profile-card a {
-  text-align: center;
-  color: #ffffff;
-}
-
-.profile-card h2 {
-  font-size: 1.5em;
-}
-
-.profile-card p,
-.profile-card a {
-  font-size: 1.25em;
-  margin-top: .25em;
-  font-family: 'Raleway', sans-serif;
-}
-
-.profile-card figcaption a {
-  display: block;
-  text-decoration: none;
-}
-
-.profile-card figcaption p:last-child {
-  margin-top: 2em;
-}
-
-.profile-menu {
-  color: #fff;
-  background-color: #333;
-}
-
-.profile-menu i {
-  padding-right: .5em;
-}
-
-.profile-menu a {
-  color: #fff;
-  text-decoration: none;
-  display: inline-block;
-  width: 100%;
-  padding: .75em 1em;
-}
-.profile-menu a:hover {
-  color: #77923d;
 }
 
 /* -----------------------------------------------------------------------------

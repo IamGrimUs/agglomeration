@@ -4,6 +4,7 @@
   "description": "To create a sense of connectedness within a remote group of users. ",
   "main": "server.js",
   "scripts": {
+    "build": "webpack",
     "test": "mocha",
     "start": "node server.js"
   },
@@ -25,6 +26,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "jquery": "^3.2.1",
     "mongoose": "^4.11.7",
     "password-hash-and-salt": "^0.1.4"
   }

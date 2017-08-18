@@ -4,17 +4,16 @@ const userSchema = mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true },
+  telephone: { type: String },
   departmentId: { type: String },
   position: { type: String, required: true },
-  managerId: { type: String, required: false },
   city: { type: String },
   state: { type: String },
   country: { type: String, required: true },
   dateHired: { type: Date },
-  personalityQuerks: { type: String },
   favoritePartOfDay: { type: String },
   hobbies: { type: String },
-  permission: { type: String, required: true },
+  permission: { type: String },
   password: { type: String, required: true },
   salt: { type: String }
 });
@@ -30,14 +29,14 @@ userSchema.methods.toClient = function() {
     firstName: this.firstName,
     lastName: this.lastName,
     email: this.email,
+    telephone: this.telephone,
     departmentId: this.departmentId,
     position: this.position,
-    managerId: this.managerId,
-    city: this.city,
     state: this.state,
     country: this.country,
     dateHired: this.dateHired,
-    favoritePartOfDay: this.favoritePartOfDay
+    favoritePartOfDay: this.favoritePartOfDay,
+    hobbies: this.hobbies
   };
 };
 
