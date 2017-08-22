@@ -153,6 +153,12 @@ img {
   width: 100%;
 }
 
+.site-title {
+  font-size: 3em;
+  text-align: center;
+  margin: 1.5em 0;
+}
+
 .applied-filter-list {
   font-size: 1em;
   color: #333333;

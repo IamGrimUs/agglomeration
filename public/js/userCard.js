@@ -3,11 +3,10 @@ import $ from "jquery";
 export default class UserCard {
   constructor(user) {
     this.user = user;
-    this.setHandlers();
   }
 
-  setHandlers() {
-    $(".profile-card").on("click", function(event) {
+  setHandlers(itemToClick) {
+    $(itemToClick).on("click", function(event) {
       event.preventDefault();
       console.log(this.id);
       window.location = "profile.html";

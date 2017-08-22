@@ -8,9 +8,15 @@ function getAllUsers() {
 }
 
 function showAllUsers(data) {
+  let counter = 0;
   for (let user of data.users) {
     const card = new UserCard(user);
     card.renderUserCard(".wrapper1");
+    counter++;
+    console.log(data.users.length);
+    if (counter >= data.users.length) {
+      card.setHandlers(".wrapper1");
+    }
   }
 }
 
