@@ -1,8 +1,8 @@
 import $ from "jquery";
 
-export default class UserCard {
-  constructor(user) {
-    this.user = user;
+export default class departmentCard {
+  constructor(department) {
+    this.department = department;
     this.setHandlers();
   }
 

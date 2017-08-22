@@ -4,8 +4,7 @@
 <head>
   <title>Agglomeration</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/index.css">
   <script src="https://use.fontawesome.com/4bfcf39c44.js"></script>
   <meta charset="utf-8">
 </head>
@@ -14,18 +13,28 @@
   <nav id="c-menu--push-left" class="c-menu c-menu--push-left">
     <div>
       <button class="c-menu__close">
-          <i class="fa fa-window-close fa-3x" aria-hidden="true"></i>
-        </button>
+        <i class="fa fa-window-close fa-3x" aria-hidden="true"></i>
+      </button>
     </div>
     <section class="profile-menu">
-      <a href="profile-edit.html">
-          <i class="fa fa-user fa-2x" aria-hidden="true" ></i>
-          edit profile
-        </a>
+      <a href="profile-create.html">
+        <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+        create user profile
+      </a>
+    </section>
+    <section class="search-by-email-menu">
+      <label for="searchEmail">search by email</label>
+      <input type="searchEmail" id="searchEmail" name="searchEmail" value="" aria-describedby="email-format">
+      <span id="email-format" class="help">Format: jdoe@email.com</span>
+    </section>
+    <section class="search-by-name-menu">
+      <label for="searchName">search by name</label>
+      <input type="searchName" id="searchName" name="searchName" value="" aria-describedby="name-format">
+      <span id="name-format" class="help">Format: John Doe</span>
     </section>
     <section class="departments">
       <p class="navagation-section-header">
-        Departments
+        search by departments
       </p>
       <ul>
         <li>
@@ -63,188 +72,21 @@
             <input type="checkbox" value="6" name=" & Anal"/>
           </label>
         </li>
+        <li>
+          <button type="submit" class="search">submit</button>
+        </li>
       </ul>
     </section>
   </nav>
-  <p class="applied-filter-list">
+  <!-- <p class="applied-filter-list">
     display all
-  </p>
+  </p> -->
   <section id="c-mask" class="c-mask"></section>
-  <div class="wrapper-0 o-wrapper" id="o-wrapper">
+  <div class="wrapper0 o-wrapper" id="o-wrapper">
     <div class="menu-button-container">
       <button id="c-button--push-left" class="c-button"><i class="fa fa-bars fa-3x" aria-hidden="true"></i></button>
     </div>
-    <div class="wrapper-1">
-      <div class="profile-card campaign-team">
-        <div>
-          <h2>Abigail Gahol</h2>
-          <p>Campaign & Technical services</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Gahol_Abigail_silly_bw.jpg" alt="Abigail Gahol">
-          <figcaption>
-            <p>Senior Campaign Specialist</p>
-            <a href="mailto:agahol@shawscott.com">agahol@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -5.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card campaign-team">
-        <div>
-          <h2>Danny Kim</h2>
-          <p>Campaign & Technical services</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Danny_Kim_serious_bw.jpg" alt="Danny Kim">
-          <figcaption>
-            <a href="mailto:dkim@shawscott.com">dkim@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -7.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card creative-team">
-        <div>
-          <h2>DeeDee Flagg</h2>
-          <p>Creative</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Flagg_Dee_Dee_silly_bw.jpg" alt="DeeDee Flagg">
-          <figcaption>
-            <a href="mailto:dflagg@shawscott.com">dflagg@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -4.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card campaign-team">
-        <div>
-          <h2>YJ Choi</h2>
-          <p>Campaign & Technical services</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Choi_YJ_serious_bw.jpg" alt="YJ Choi">
-          <figcaption>
-            <p>VP of everything</p>
-            <a href="mailto:ychoi@shawscott.com">ychoi@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -7.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card labs-team">
-        <div>
-          <h2>Jen Atherly</h2>
-          <p>Account Manager Labs</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Atherley_Jen_silly_bw.jpg" alt="Jen Atherly">
-          <figcaption>
-            <a href="mailto:jatherley@shawscott.com">jatherly@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -7.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card creative-team">
-        <div>
-          <h2>Bret Smith</h2>
-          <p>Email Developer</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Bret_Smith_Silly_bw.jpg" alt="Bret Smith">
-          <figcaption>
-            <a href="mailto:bsmith@shawscott.com">bsmith@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -7.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card operations-team">
-        <div>
-          <h2>Jamie Frech</h2>
-          <p>President</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Jamie_Frech_silly_bw.jpg" alt="Jamie Frech">
-          <figcaption>
-            <a href="mailto:jfrech@shawscott.com">jfrech@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -4.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card account-team">
-        <div>
-          <h2>Sarah Park</h2>
-          <p>Account Manager</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Sarah_Park_silly_bw.jpg" alt="Sarah Park">
-          <figcaption>
-            <a href="mailto:spark@shawscott.com">spark@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -7.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card creative-team">
-        <div>
-          <h2>Russell Thomas</h2>
-          <p>Full Stack Developer</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Thomas_Russell_silly_bw.jpg" alt="Russell Thomas">
-          <figcaption>
-            <a href="mailto:rthomas@shawscott.com">rthomas@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -7.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card creative-team">
-        <div>
-          <h2>Vinca Swanson</h2>
-          <p>Font End Developer</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Swanson_Vinca_silly_bw.jpg" alt="Vinca Swanson">
-          <figcaption>
-            <a href="mailto:vswanson@shawscott.com">vswanson@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -7.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card account-team">
-        <div>
-          <h2>Kurt Pueterbaugh</h2>
-          <p>Senior Account Manager</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Puterbaugh_Kurt_serious_bw.jpg" alt="Kurt Pueterbaugh">
-          <figcaption>
-            <a href="mailto:kpueterbaugh@shawscott.com">kpueterbaugh@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -7.00</p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="profile-card account-team">
-        <div>
-          <h2>Erin Everett</h2>
-          <p>Account Manager</p>
-        </div>
-        <figure>
-          <img src="img/1152x1728_Erin_Everett_silly_bw.jpg" alt="Erin Everett">
-          <figcaption>
-            <a href="mailto:eeverett@shawscott.com">eeverett@shawscott.com</a>
-            <a href="tel:112-223-3334">112-223-3334</a>
-            <p>Time zone: GMT -7.00</p>
-          </figcaption>
-        </figure>
-      </div>
+    <div class="wrapper1">
     </div>
   </div>
   <script src="dist/bundle.js"></script>
@@ -262,6 +104,8 @@
       e.preventDefault;
       pushLeft.open();
     });
+
+    EntryPoints.runIndex();
   </script>
 </body>
 

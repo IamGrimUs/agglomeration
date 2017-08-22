@@ -1,11 +1,11 @@
 const userModel = require("./user.model");
-
 const findAllUsers = (req, res) => {
   userModel
     .find()
-    .then(users => {
+    .then(async users => {
+      let promises = users.map(async user => await user.toClient());
       res.json({
-        users: users.map(user => user.toClient())
+        users: await Promise.all(promises)
       });
     })
     .catch(err => {
@@ -18,8 +18,8 @@ const findUserById = (req, res) => {
   const userId = req.params.userId;
   userModel
     .findById(userId)
-    .then(user => {
-      res.json(user.toClient());
+    .then(async user => {
+      res.json(await user.toClient());
     })
     .catch(err => {
       console.error(err);
@@ -56,7 +56,7 @@ const searchUser = (req, res) => {
     .find(query)
     .then(users => {
       res.json({
-        users: users.map(user => user.toClient())
+        users: users.map(async user => await user.toClient())
       });
     })
     .catch(err => {
@@ -71,21 +71,21 @@ const createNewUser = (req, res) => {
     .create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
+      biography: req.body.biography,
       email: req.body.email,
       telephone: req.body.telephone,
       departmentId: req.body.departmentId,
+      departmentName: req.body.departmentName,
       position: req.body.position,
-      managerId: req.body.managerId,
       city: req.body.city,
       state: req.body.state,
       country: req.body.country,
-      dateHired: req.body.dateHired,
       favoritePartOfDay: req.body.favoritePartofDay,
       hobbies: req.body.hobbies,
-      permission: req.body.permission,
+      // permission: req.body.permission,
       password: req.body.password
     })
-    .then(userModel => res.status(201).json(userModel.toClient()))
+    .then(async userModel => res.status(201).json(await userModel.toClient()))
     .catch(err => {
       console.error(err);
       res.status(500).json({ message: "Internal server error" });
@@ -106,15 +106,14 @@ const updateUserById = (req, res) => {
   const updateableFields = [
     "firstName",
     "lastName",
+    "biography",
     "email",
-    "departmentId",
+    "telephone",
     "position",
-    "managerId",
+    "departmentName",
     "city",
     "state",
     "country",
-    "dateHired",
-    "personalityQuerks",
     "favoritePartOfDay",
     "hobbies",
     "password"

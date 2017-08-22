@@ -14,7 +14,7 @@
     <section class="profile-edit-page-menu">
       <div>
         <a href="./index.html">
-        <i class=" fa fa-arrow-circle-left fa-2x " aria-hidden="true "></i>
+        <i class=" fa fa-arrow-circle-left fa-2x " aria-hidden="true"></i>
       </a>
       </div>
     </section>
@@ -36,8 +36,8 @@
               </div>
               <div>
                 <label for="lastName">last name: (required):</label>
-                <input type="text" id="lastName" name="lastName" value="" aria-describedby="last-name-format" required aria-required=”true”
-                  pattern="^[a-zA-Z]*$" title="Lastname">
+                <input type="text" id="lastName" name="lastName" value="" pattern="^[a-zA-Z]*$" aria-describedby="last-name-format" required
+                  aria-required=”true” title="Lastname">
                 <span id="last-name-format" class="help">Format: Lastname</span>
               </div>
               <div>
@@ -59,6 +59,10 @@
                 <label for="position">Position Title (required):</label>
                 <input type="text" id="position" name="position" value="" required aria-required=”true”>
               </div>
+              <div>
+                <label for="departmentId">DepartmentId (required):</label>
+                <input type="text" id="departmentId" name="departmentId" value="" required aria-required=”true”>
+              </div>
             </section>
             <div>
               <label for="departmentName">Department (required):</label>
@@ -71,6 +75,7 @@
                 <option value="Operations">Operations</option>
                 <option value="Quality Assurance">Quality Assurance</option>
                 <option value="Strategy & Analytics">Strategy & Analytics</option>
+                <option value="Unknown Department">Unknown Department</option>
               </select>
             </div>
             <section class="flex-container">
@@ -393,12 +398,12 @@
               </div>
             </section>
             <div>
-              <label for="biography">Introduce yourself:</label>
-              <textarea id="biography" name="biography" value="" rows="5" cols="20"></textarea>
+              <label for="biography">Introduce yourself (required):</label>
+              <textarea id="biography" name="biography" value="" rows="5" cols="20" required aria-required=”true”></textarea>
             </div>
             <div>
-              <label for="favoritePartOfDay">Favorite part of the day:</label>
-              <textarea id="favoritePartOfDay" name="favoritePartOfDay" value="" rows="5" cols="20"></textarea>
+              <label for="favoritePartOfDay">Favorite part of the day (required):</label>
+              <textarea id="favoritePartOfDay" name="favoritePartOfDay" value="" rows="5" cols="20" required aria-required=”true”></textarea>
             </div>
             <div>
               <label for="hobbies">Hobbies:</label>
@@ -411,10 +416,16 @@
         </form>
       </section>
     </main>
+    <section class="successMessage hidden">
+      <p></p>
+    </section>
+    <section class="failureMessage hidden">
+      <p></p>
+    </section>
   </section>
   <script src="dist/bundle.js"></script>
   <script>
-    EntryPoints.runProfileEdit();
+    EntryPoints.runProfileCreate();
   </script>
 </body>
 
