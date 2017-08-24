@@ -32,9 +32,7 @@ const createNewDepartment = (req, res) => {
   departmentModel
     .create({
       name: req.body.name,
-      managerId: req.body.managerId,
-      directorId: req.body.directorId,
-      vpId: req.body.vpId
+      managerId: req.body.managerId
     })
     .then(departmentModel => res.status(201).json(departmentModel.toClient()))
     .catch(err => {

@@ -153,10 +153,33 @@ img {
   width: 100%;
 }
 
+.site-title-container {
+  width: 95%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.site-title-container p {
+  line-height: 1.5;
+  font-size: 1.25em;
+}
+
 .site-title {
-  font-size: 3em;
-  text-align: center;
-  margin: 1.5em 0;
+  font-size: 2em;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+@media screen and (min-width: 600px) {
+  .site-title-container {
+    width: 90%;
+    padding: 1em;
+    margin-bottom: 1em;
+  }
+
+  .site-title {
+    font-size: 3em;
+  }
 }
 
 .applied-filter-list {
@@ -169,80 +192,119 @@ img {
   padding-right: .5em;
 }
 
-.wrapper0 {
-  margin: 0 auto;
-  max-width: 98%;
-}
-
-@media screen and (min-width: 800px) {
-  .wrapper0 {
-    display: grid;
-    grid-template-columns: 60px auto;
-    grid-column-gap: 2px;
-  }
-}
-
-.wrapper1 {
-  display: grid;
-  align-items: end;
-  grid-template-columns: 1fr;
-  grid-column-gap: 4px;
-  grid-row-gap: 2em;
-}
-
-@media screen and (min-width: 500px) {
-  .wrapper1 {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media screen and (min-width: 780px) {
-  .wrapper1 {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  .wrapper1 {
-    margin-top: 1.4em;
-  }
-}
-
-@media screen and (min-width: 1100px) {
-  .wrapper1 {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  .wrapper1 {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  }
-}
-
-@media screen and (min-width: 2000px) {
-  .wrapper1 {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  }
-}
-
 .menu-button-container {
   margin: 1em 0;
 }
 
-.profile-card {
-  line-height: 1.25;
-  cursor: pointer;
-  transition: all .5s ease;
+.back-to-top {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin-left: 1em;
+  margin-bottom: .5em;
+  z-index: 100;
 }
 
-.profile-card p {
-  font-family: 'Raleway', sans-serif;
+.back-to-top a {
+  color: #000000;
+}
+
+.back-to-top a:hover {
+  color: #77923d;
+}
+
+.navagation-section-header {
+  padding: .5em 1em;
+  margin-top: 1em;
+  font-size: 1em;
+  font-weight: 700;
+  color: #000000;
+  text-align: left;
+}
+
+.search-by-email-menu label,
+.search-by-name-menu label {
+  font-weight: 700;
+  color: #000000;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+  margin-top: 1.5em;
+  margin-bottom: .5em;
+}
+
+.search-by-email-menu,
+.search-by-name-menu {
+  padding: .5em 1em;
+}
+
+.search-by-email-menu input,
+.search-by-name-menu input {
+  height: 40px;
+  width: 100%;
+}
+
+.departments {
+  clear: both;
+  border-bottom: 1px solid #31839a;
+  padding-top: 1em;
+}
+
+.search {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  height: 60px;
+  font-size: 1.5em;
+  border: none;
+  border-bottom: 4px solid #77923d;
+}
+
+.search:hover {
+  background-color: #77923d;
+  border-bottom: 4px solid #333;
 }
 
 /**
- * Menu overview.
+ * Body states.
+ *
+ * When a menu is active, we want to hide the overflows on the body to prevent
+ * awkward document scrolling.
  */
+body.has-active-menu {
+  overflow: hidden;
+}
+
+/* -----------------------------------------------------------------------------
+
+  Mask Object
+
+----------------------------------------------------------------------------- */
+
+.c-mask {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 0.5s, width 0s 0.5s, height 0s 0.5s;
+}
+
+.c-mask.is-active {
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  transition: opacity 0.5s;
+}
+
+/* -----------------------------------------------------------------------------
+
+  C-Menu
+
+----------------------------------------------------------------------------- */
 
 .c-menu {
   position: fixed;
@@ -293,99 +355,6 @@ img {
 
 .c-menu ul li input {
   float: right;
-}
-
-.navagation-section-header {
-  padding: .5em 1em;
-  margin-top: 1em;
-  font-size: 1em;
-  font-weight: 700;
-  color: #000000;
-  text-align: left;
-}
-
-.search-by-email-menu label,
-.search-by-name-menu label {
-  font-weight: 700;
-  color: #000000;
-  font-family: 'Open Sans', sans-serif;
-  padding: 0;
-  margin-top: 1.5em;
-  margin-bottom: .5em;
-}
-
-.search-by-email-menu,
-.search-by-name-menu {
-  padding: .5em 1em;
-}
-
-.search-by-email-menu input,
-.search-by-name-menu input {
-  height: 40px;
-  width: 100%;
-}
-
-.departments {
-  clear: both;
-  border-bottom: 1px solid #31839a;
-  padding-top: 1em;
-}
-
-/**
- * Close button resets.
- */
-.c-menu__close {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: #cf2347;
-  box-shadow: none;
-  border: none;
-  border-radius: none;
-  color: #ffffff;
-  cursor: pointer;
-  text-align: right;
-}
-
-/**
- * Close button resets.
- */
-.c-menu__close:focus {
-  outline: none;
-}
-
-/**
- * Body states.
- *
- * When a menu is active, we want to hide the overflows on the body to prevent
- * awkward document scrolling.
- */
-body.has-active-menu {
-  overflow: hidden;
-}
-
-/**
- * Mask component
- */
-
-.c-mask {
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  width: 0;
-  height: 0;
-  background-color: #000;
-  opacity: 0;
-  transition: opacity 0.5s, width 0s 0.5s, height 0s 0.5s;
-}
-
-.c-mask.is-active {
-  width: 100%;
-  height: 100%;
-  opacity: 0.7;
-  transition: opacity 0.5s;
 }
 
 .c-menu--push-left {
@@ -442,6 +411,17 @@ body.has-active-menu {
   transform: translateX(0);
 }
 
+/* -----------------------------------------------------------------------------
+
+  WRAPPER OBJECTS
+
+----------------------------------------------------------------------------- */
+
+.o-wrapper {
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+}
+
 .o-wrapper.has-push-left {
   transform: translateX(100%);
 }
@@ -452,27 +432,61 @@ body.has-active-menu {
   }
 }
 
-.search {
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  height: 60px;
-  font-size: 1.5em;
-  border: none;
-  border-bottom: 4px solid #77923d;
+.wrapper0 {
+  margin: 0 auto;
+  max-width: 98%;
 }
-.search:hover {
-  background-color: #77923d;
-  border-bottom: 4px solid #333;
+
+@media screen and (min-width: 800px) {
+  .wrapper0 {
+    display: grid;
+    grid-template-columns: 60px auto;
+    grid-column-gap: 2px;
+  }
 }
-/* -----------------------------------------------------------------------------
 
-  WRAPPER OBJECT
+.wrapper1 {
+  display: grid;
+  align-items: end;
+  grid-template-columns: 1fr;
+  grid-column-gap: 1em;
+  grid-row-gap: 2em;
+}
 
------------------------------------------------------------------------------ */
-.o-wrapper {
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
+@media screen and (min-width: 500px) {
+  .wrapper1 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .wrapper1 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .wrapper1 {
+    margin-top: 1.4em;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .wrapper1 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .wrapper1 {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .wrapper1 {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
 }
 
 /* -----------------------------------------------------------------------------
@@ -480,6 +494,7 @@ body.has-active-menu {
   BUTTONS
 
 ----------------------------------------------------------------------------- */
+
 .c-button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -500,6 +515,23 @@ body.has-active-menu {
   cursor: not-allowed;
 }
 
+.c-menu__close {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #cf2347;
+  box-shadow: none;
+  border: none;
+  border-radius: none;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: right;
+}
+
+.c-menu__close:focus {
+  outline: none;
+}
+
 /* -----------------------------------------------------------------------------
 
   CHECKBOX
@@ -511,12 +543,9 @@ body.has-active-menu {
 
 /* -----------------------------------------------------------------------------
 
-  Profile-Cards
+  Team colors
 
 ----------------------------------------------------------------------------- */
-body.no-team {
-  background-color: #333;
-}
 
 body.account-team {
   background-color: #77923d;
@@ -539,59 +568,46 @@ body.operations-team {
 }
 
 body.quality-team {
-  background-color: #31839a;
+  background-color: #999999;
 }
 
 body.strategy-team {
   background-color: #6a5584;
 }
 
-body.tech-team {
-  background-color: #999999;
-}
-
-div.no-team {
-  border: 1px solid #333;
-  background-color: #333;
-}
-
 div.account-team {
-  border: 1px solid #77923d;
+  border-bottom: 10px solid #77923d;
   background-color: #77923d;
 }
 
 div.campaign-team {
-  border: 1px solid #cf2347;
+  border-bottom: 10px solid #cf2347;
   background-color: #cf2347;
 }
 
 div.creative-team {
-  border: 1px solid #e36d25;
+  border-bottom: 10px solid #e36d25;
   background-color: #e36d25;
 }
 
 div.labs-team {
-  border: 1px solid #666666;
-  background-color: #666666;
+  border-bottom: 10px solid #31839a;
+  background-color: #31839a;
 }
 
 div.operations-team {
-  border: 1px solid #666666;
+  border-bottom: 10px solid #666666;
   background-color: #666666;
 }
 
 div.quality-team {
-  border: 1px solid #31839a;
-  background-color: #31839a;
+  border-bottom: 10px solid #999999;
+  background-color: #999999;
 }
 
 div.strategy-team {
-  border: 1px solid #6a5584;
+  border-bottom: 10px solid #6a5584;
   background-color: #6a5584;
-}
-
-figure.no-team {
-  border: 2px solid #333;
 }
 
 figure.account-team {
@@ -611,46 +627,38 @@ figure.dev-team {
 }
 
 figure.labs-team {
-  border: 2px solid #666666;
+  border: 2px solid #31839a;
 }
 
 figure.operations-team {
-  border: 2px solid #999999;
+  border: 2px solid #666666;
 }
 
 figure.quality-team {
-  border: 2px solid #31839a;
+  border: 2px solid #999999;
 }
 
 figure.strategy-team {
   border: 2px solid #6a5584;
 }
 
-figure.tech-team {
-  border: 2px solid #31839a;
-}
+/* -----------------------------------------------------------------------------
+
+  Profile-Cards
+
+----------------------------------------------------------------------------- */
 
 .profile-card {
-  position: relative;
-  overflow: hidden;
-  float: left;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: all .5s ease;
 }
 
-.front-page-name {
-  font-size: 1.25em;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-
-.front-page-title {
+.profile-card p {
   font-family: 'Raleway', sans-serif;
-  font-size: 1em;
-  letter-spacing: 1.5px;
 }
 
 .profile-card figure {
-  margin: 0;
-  padding: 0;
   position: relative;
   cursor: pointer;
 }
@@ -703,21 +711,25 @@ figure.hover figcaption {
   transform: rotateY(0);
 }
 
-.profile-card div {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 1em;
+.profile-card div,
+.profile-card figcaption {
+  padding: 1em .5em 1em .5em;
 }
 
-.profile-card h2,
+.profile-card figcaption {
+  margin-top: 1.5em;
+}
+
 .profile-card p,
 .profile-card a {
-  text-align: center;
+  text-align: left;
   color: #ffffff;
 }
 
 .profile-card h2 {
   font-size: 1.5em;
+  color: #ffffff;
+  text-align: left;
 }
 
 .profile-card p,
@@ -1052,4 +1064,28 @@ select {
 
 .failureMessage {
   background-color: #cf2347;
+}
+
+.profile-information h1 {
+  text-align: left;
+  color: #333;
+  font-weight: 700;
+  margin-top: .5em;
+  margin-bottom: .15em;
+  margin-left: 2em;
+  font-size: 2.25em;
+}
+
+.department-creation-container h1,
+.department-creation-container p {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.department-creation-container h1 {
+  padding-left: .5em;
+}
+
+.department-creation-container p {
+  padding: 1em;
 }

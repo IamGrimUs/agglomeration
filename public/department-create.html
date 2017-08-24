@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Agglomeration</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="https://use.fontawesome.com/4bfcf39c44.js"></script>
+  <meta charset="utf-8">
+</head>
+
+<body class="no-team">
+  <section class="profile-border">
+    <section class="profile-edit-page-menu">
+      <div>
+        <a href="./index.html">
+          <i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
+        </a>
+      </div>
+    </section>
+    <main role="main">
+      <section class="profile-information department-creation-container">
+        <h1>Department creation zone:</h1>
+        <p>Please enter your department categories and manager name when applicable.</p>
+        <form class="profile-edit-form text-left" action="" method="post" id="profile-form">
+          <fieldset>
+            <section class="flex-container">
+              <div>
+                <label for="departmentName">department name: (required):</label>
+                <input type="text" id="departmentName" name="departmentName" value="" aria-describedby="department-name-format" required
+                  aria-required=”true” pattern="^[a-zA-Z]*$" title="departmentname">
+                <span id="department-name-format" class="help">Format: Departmentname</span>
+              </div>
+              <div>
+                <label for="managerName">manager name</label>
+                <input type="text" id="managerName" name="managerName" value="" pattern="^[a-zA-Z]*$" aria-describedby="manager-name-format"
+                  title="managername">
+                <span id="manager-name-format" class="help">Format: managername</span>
+              </div>
+            </section>
+            <div>
+              <button name="profile-submit" type="submit" value="" id="profile-submit" class="profile-submit">Submit</button>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+    <section class="successMessage hidden">
+      <p></p>
+    </section>
+    <section class="failureMessage hidden">
+      <p></p>
+    </section>
+  </section>
+  <script src="dist/bundle.js"></script>
+  <script>
+    EntryPoints.runProfileCreate();
+  </script>
+</body>
+
+</html>
