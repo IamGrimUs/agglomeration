@@ -115,7 +115,7 @@ export default class UserCard {
   }
 
   renderUserProfileEdit(containerForAppending) {
-    console.log(containerForAppending);
+    this.verifyUserData(this.user);
     $(containerForAppending).append(`
       <header role="banner" class="profile-edit-header">
         <figure class="profile-pic-container ${this.user.departmentName
@@ -522,6 +522,16 @@ export default class UserCard {
         </section>
       </main>
     `);
+  }
+
+  verifyUserData(obj) {
+    var result = "";
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        result += key + " : " + obj[key] + "\n";
+      }
+    }
+    console.log(result);
   }
 
   renderUserLink(containerForAppending) {

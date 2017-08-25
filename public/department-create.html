@@ -26,9 +26,9 @@
           <fieldset>
             <section class="flex-container">
               <div>
-                <label for="departmentName">department name: (required):</label>
-                <input type="text" id="departmentName" name="departmentName" value="" aria-describedby="department-name-format" required
-                  aria-required=”true” pattern="^[a-zA-Z]*$" title="departmentname">
+                <label for="name">department name: (required):</label>
+                <input type="text" id="name" name="name" value="" aria-describedby="department-name-format" required aria-required=”true”
+                  pattern="^[a-zA-Z]*$" title="departmentname">
                 <span id="department-name-format" class="help">Format: Departmentname</span>
               </div>
               <div>
@@ -54,7 +54,7 @@
   </section>
   <script src="dist/bundle.js"></script>
   <script>
-    EntryPoints.runProfileCreate();
+    EntryPoints.runDepartmentCreate();
   </script>
 </body>
 

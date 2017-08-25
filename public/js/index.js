@@ -30,7 +30,11 @@ function showSingleUser(data) {
 }
 
 function createUser() {
-  $.post(`/user/`).next();
+  $.post(`/user/`);
+}
+
+function editUser(userId) {
+  $.post(`/user/${userId}`);
 }
 
 function getSingleUserEdit(userId) {
@@ -67,31 +71,42 @@ function captureUserSubmission() {
     e.preventDefault();
 
     $.ajax({
-      url: "/user",
-      cache: false,
+      url: "/user/",
       type: "POST",
       data: $("#profile-form").serialize(),
       success: function(json) {
         console.log("data recieved");
-        // $(".successMessage p").html(
-        //   `Thank you for creating a profile. It's great to meet you ${json.firstName}`
-        // );
       }
     });
   });
 }
 
-function captureUserEdit() {
-  $("#profile-edit-form").on("submit", function(e) {
+function captureUserEdit(userId) {
+  console.log("the user Id:", userId);
+  $("#profile-form").on("submit", function(e) {
     e.preventDefault();
 
     $.ajax({
-      url: "/user",
-      cache: false,
-      type: "PUT",
+      url: `/user/${userId}`,
+      type: "Put",
       data: $("#profile-form").serialize(),
       success: function(json) {
-        console.log("data updated");
+        console.log("data recieved");
+      }
+    });
+  });
+}
+
+function captureDepartmentSubmission() {
+  $("#profile-form").on("submit", function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: "/department/",
+      type: "POST",
+      data: $("#profile-form").serialize(),
+      success: function(json) {
+        console.log("data recieved");
       }
     });
   });
@@ -127,7 +142,11 @@ export { getAllDepartments, showDepartmentOptions };
       queries[i[0].toString()] = i[1].toString();
     });
     getSingleUserEdit(queries["id"]);
-    captureUserEdit();
+    captureUserEdit(queries["id"]);
+  };
+
+  entryPoints.runDepartmentCreate = () => {
+    captureDepartmentSubmission();
   };
 
   window.EntryPoints = entryPoints;
