@@ -10,7 +10,6 @@ const userSchema = mongoose.Schema({
   departmentId: { type: String, required: true },
   departmentName: { type: String, required: true },
   position: { type: String, required: true },
-  city: { type: String },
   state: { type: String },
   country: { type: String, required: true },
   favoritePartOfDay: { type: String },
@@ -36,8 +35,8 @@ userSchema.methods.toClient = async function() {
     telephone: this.telephone,
     departmentId: this.departmentId,
     departmentName: department ? department.name : null,
-    managerId: department ? department.managerId : null,
-    managerName: department ? await getManagerName(department.managerId) : null,
+    // managerId: department ? department.managerId : null,
+    // managerName: department ? await getManagerName(department.managerId) : null,
     position: this.position,
     state: this.state,
     country: this.country,
@@ -54,10 +53,10 @@ async function getDepartment(id) {
   return department;
 }
 
-async function getManagerName(id) {
-  if (!id) return;
-  let manager = await user.findById(id);
-  return manager.fullName;
-}
+// async function getManagerName(id) {
+//   if (!id) return;
+//   let manager = await user.findById(id);
+//   return manager.fullName;
+// }
 
 module.exports = user;
