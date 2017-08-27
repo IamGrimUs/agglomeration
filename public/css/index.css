@@ -228,25 +228,22 @@ img {
   color: #000000;
   font-family: 'Open Sans', sans-serif;
   padding: 0;
-  margin-top: 1.5em;
-  margin-bottom: .5em;
+  margin-top: 1em;
 }
 
 .search-by-email-menu,
 .search-by-name-menu {
-  padding: .5em 1em;
+  padding: 0 1em;
+}
+
+.search-by-name-menu {
+  margin-bottom: 2em;
 }
 
 .search-by-email-menu input,
 .search-by-name-menu input {
   height: 40px;
   width: 100%;
-}
-
-.departments {
-  clear: both;
-  border-bottom: 1px solid #31839a;
-  padding-top: 1em;
 }
 
 .search {
@@ -323,6 +320,10 @@ body.has-active-menu {
 
 .c-menu input {
   height: auto;
+}
+
+.c-menu input.search-bar {
+  height: 40px;
 }
 
 .c-menu ul {
@@ -850,15 +851,6 @@ figure.hover figcaption {
   border-radius: 50%;
 }
 
-.profile-information h1 {
-  text-align: left;
-  color: #333;
-  font-weight: 700;
-  margin-top: .5em;
-  margin-bottom: .15em;
-  font-size: 2.25em;
-}
-
 .profile-information a {
   color: #333;
   text-decoration: none;
@@ -1072,8 +1064,11 @@ select {
   font-weight: 700;
   margin-top: .5em;
   margin-bottom: .15em;
-  margin-left: 2em;
   font-size: 2.25em;
+}
+
+.profile-information p {
+  text-align: left;
 }
 
 .department-creation-container h1,

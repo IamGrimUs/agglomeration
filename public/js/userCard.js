@@ -189,22 +189,18 @@ export default class UserCard {
               </div>
               <div>
                 <label for="biography">Introduce yourself:</label>
-                <textarea id="biography" name="biography" value="${this.user
-                  .biography}" rows="5" cols="20" placeholder="${this.user
-      .biography}"></textarea>
+                <textarea id="biography" name="biography" rows="5" cols="20">${this
+                  .user.biography}</textarea>
               </div>
               <div>
                 <label for="favoritePartOfDay">Favorite part of the day:</label>
-                <textarea id="favoritePartOfDay" name="favoritePartOfDay" value="${this
-                  .user
-                  .favoritePartOfDay}" rows="5" cols="20" placeholder="${this
-      .user.favoritePartOfDay}"></textarea>
+                <textarea id="favoritePartOfDay" name="favoritePartOfDay" rows="5" cols="20">${this
+                  .user.favoritePartOfDay}</textarea>
               </div>
               <div>
                 <label for="hobbies">Hobbies:</label>
-                <textarea id="hobbies" name="hobbies" value="${this.user
-                  .hobbies}" rows="5" cols="20" placeholder="${this.user
-      .hobbies}"></textarea>
+                <textarea id="hobbies" name="hobbies" rows="5" cols="20">${this
+                  .user.hobbies}</textarea>
               </div>
               <div>
                 <button name="profile-edit-submit" type="submit" value="" id="profile-edit-submit" class="profile-submit">Submit</button>
@@ -215,6 +211,14 @@ export default class UserCard {
       </main>
     `);
   }
+
+  // checkForValue(valueToCheck) {
+  //   if( valueToCheck != '') {
+  //     return valueToCheck;
+  //   } else {
+
+  //   }
+  // }
 
   verifyUserData(obj) {
     var result = "";

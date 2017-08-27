@@ -69,7 +69,7 @@ function showDepartmentOptions(data, selectDepartmentId) {
   }
 }
 
-function renderStates(containerForAppending, userState) {
+function renderStates(userState) {
   let statesArray = [
     "AK",
     "AL",
@@ -132,13 +132,10 @@ function renderStates(containerForAppending, userState) {
       : ""}>${statesArray[i]}</option>`;
     renderString += option;
   }
-  // console.log(renderString);
-  // console.log(userState);
-  // console.log(containerForAppending);
-  $(containerForAppending).append(renderString);
+  return renderString;
 }
 
-function renderCountries(containerForAppending, userCountry) {
+function renderCountries(userCountry) {
   let countriesArray = [
     "Afghanistan",
     "Åland Islands",
@@ -392,17 +389,13 @@ function renderCountries(containerForAppending, userCountry) {
     ? ""
     : "selected"}>Please select a Country</option>`;
   for (let i = 0; i < countriesArray.length; i++) {
-    let option = `<option value="" disabled="disabled" ${countriesArray[
-      i
-    ]}" ${userCountry === countriesArray[i]
+    let option = `<option value="${countriesArray[i]}" ${userCountry ===
+    countriesArray[i]
       ? "selected"
-      : ""}>Please select a Country</option>`;
+      : ""}>${countriesArray[i]}</option>`;
     renderString += option;
   }
-  console.log(renderString);
-  console.log(userCountry);
-  console.log(containerForAppending);
-  $(containerForAppending).append(renderString);
+  return renderString;
 }
 
 function captureUserSubmission() {
