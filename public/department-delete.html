@@ -20,22 +20,16 @@
     </section>
     <main role="main">
       <section class="profile-information department-creation-container">
-        <h1>Department creation zone:</h1>
-        <p>Please enter your department and manager when applicable.</p>
+        <h1>Department deletion zone:</h1>
+        <p>Please enter the department you wish to delete.</p>
         <form class="profile-edit-form text-left" action="" method="post" id="profile-form">
           <fieldset>
             <section class="flex-container">
               <div>
-                <label for="name">department name (required):</label>
-                <input type="text" id="name" name="name" value="" aria-describedby="department-name-format" required aria-required=”true”
-                  title="departmentname">
-                <span id="department-name-format" class="help">Format: Departmentname</span>
-              </div>
-              <div>
-                <label for="managerName">manager name</label>
-                <input type="text" id="managerName" name="managerName" value="" aria-describedby="manager-name-format" pattern="/^[a-z ,.'-]+$/i"
-                  title="managername">
-                <span id="manager-name-format" class="help">Format: managername</span>
+                <label for="departmentId">department name (required):</label>
+                <select id="departmentId" name="departmentId" required aria-required=”true”>
+
+                </select>
               </div>
             </section>
             <div>
@@ -46,7 +40,7 @@
       </section>
     </main>
     <section class="successMessage hidden">
-      <p>Thank you for creating a department.</p>
+      <p>The department has been deleted.</p>
     </section>
     <section class="failureMessage hidden">
       <p>Oh no, something went wrong. Please check the form and try again.</p>
@@ -54,7 +48,7 @@
   </section>
   <script src="dist/bundle.js"></script>
   <script>
-    EntryPoints.runDepartmentCreate();
+    EntryPoints.runDepartmentDelete();
   </script>
 </body>
 

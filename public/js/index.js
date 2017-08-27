@@ -29,13 +29,13 @@ function showSingleUser(data) {
   card.renderUserLink(".edit-link-containter");
 }
 
-function createUser() {
-  $.post(`/user/`);
-}
+// function createUser() {
+//   $.post(`/user/`);
+// }
 
-function editUser(userId) {
-  $.post(`/user/${userId}`);
-}
+// function editUser(userId) {
+//   $.post(`/user/${userId}`);
+// }
 
 function getSingleUserEdit(userId) {
   return $.get(`/user/${userId}`).then(showSingleUserEdit);
@@ -451,7 +451,7 @@ function captureUserEdit(userId) {
       type: "PUT",
       data: $("#profile-form").serialize(),
       success: function() {
-        console.log("data recieved");
+        console.log("User profile updated");
         showEditSubmitSuccess(userId);
       },
       error: function() {
@@ -469,9 +469,9 @@ function captureDepartmentSubmission() {
       url: "/department/",
       type: "POST",
       data: $("#profile-form").serialize(),
-      success: function(json) {
-        console.log("data recieved");
-        showDepartmentSubmitSuccess(json);
+      success: function() {
+        console.log("department created");
+        showDepartmentSubmitSuccess();
       },
       error: function() {
         showSubmitError();
@@ -480,13 +480,39 @@ function captureDepartmentSubmission() {
   });
 }
 
-function showDepartmentSubmitSuccess(json) {
-  console.log(json);
+function showDepartmentSubmitSuccess() {
   $(".successMessage").toggleClass("hidden");
   $("#name").val("");
   setTimeout(function() {
     $(".successMessage").toggleClass("hidden");
-  }, 3000);
+  }, 1500);
+}
+
+function captureDepartmentForDeletion(departmentId) {
+  $("#profile-form").on("submit", function(e) {
+    e.preventDefault();
+    let departmentId = $(this).find("[name=departmentId]").val();
+    console.log(departmentId);
+    $.ajax({
+      url: `/department/${departmentId}`,
+      type: "DELETE",
+      data: $("#profile-form").serialize(),
+      success: function() {
+        showDepartmentForDeletionSubmitSuccess();
+      },
+      error: function() {
+        showSubmitError();
+      }
+    });
+  });
+}
+
+function showDepartmentForDeletionSubmitSuccess() {
+  $(".successMessage").toggleClass("hidden");
+  $("#name").val("");
+  setTimeout(function() {
+    window.location = "index.html";
+  }, 1500);
 }
 
 export { getAllDepartments, renderStates, renderCountries };
@@ -525,6 +551,11 @@ export { getAllDepartments, renderStates, renderCountries };
 
   entryPoints.runDepartmentCreate = () => {
     captureDepartmentSubmission();
+  };
+
+  entryPoints.runDepartmentDelete = () => {
+    getAllDepartments();
+    captureDepartmentForDeletion(departmentId);
   };
 
   window.EntryPoints = entryPoints;
