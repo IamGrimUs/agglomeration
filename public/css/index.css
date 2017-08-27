@@ -655,6 +655,10 @@ figure.strategy-team {
   transition: all .5s ease;
 }
 
+.profile-card .profile-card-header p {
+  color: #fff;
+}
+
 .profile-card p {
   font-family: 'Raleway', sans-serif;
 }
@@ -662,6 +666,7 @@ figure.strategy-team {
 .profile-card figure {
   position: relative;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .profile-card figure img {
@@ -710,11 +715,14 @@ figure.hover figcaption {
   -webkit-transform: rotateY(0);
   -moz-transform: rotateY(0);
   transform: rotateY(0);
+  background-color: #f3f3f3;
+  border-right: 1px solid #bfbfbf;
+  border-left: 1px solid #bfbfbf;
 }
 
 .profile-card div,
 .profile-card figcaption {
-  padding: 1em .5em 1em .5em;
+  padding: 1em .75em 1em .75em;
 }
 
 .profile-card figcaption {
@@ -724,12 +732,12 @@ figure.hover figcaption {
 .profile-card p,
 .profile-card a {
   text-align: left;
-  color: #ffffff;
+  color: #333;
 }
 
 .profile-card h2 {
   font-size: 1.5em;
-  color: #ffffff;
+  color: #fff;
   text-align: left;
 }
 
@@ -930,6 +938,34 @@ figure.hover figcaption {
   margin-top: 2em;
 }
 
+@media screen and (min-width: 600px) {
+  .profile-edit-header {
+    display: flex;
+  }
+}
+
+.profile-edit-main {
+  clear: both;
+}
+
+.profile-edit-header  h1.profile-edit-headline {
+  text-align: left;
+  color: #333;
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+  font-size: 2.25em;
+  margin-left: .4em;
+}
+
+@media screen and (min-width: 600px) {
+  .profile-edit-header  h1.profile-edit-headline {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 2em;
+  }
+}
+
 .profile-edit-form {
   width: 90%;
   margin: 0 auto;
@@ -1047,7 +1083,7 @@ select {
 .successMessage,
 .failureMessage {
   margin-top: 2em;
-  padding: 1em;
+  padding: 2em;
   font-size: 1.25em;
   background-color: #77923d;
   color: #ffffff;

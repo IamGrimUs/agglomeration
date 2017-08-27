@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true },
   telephone: { type: String, required: true },
   departmentId: { type: String, required: true },
-  departmentName: { type: String, required: true },
+  departmentName: { type: String },
   position: { type: String, required: true },
   state: { type: String },
   country: { type: String, required: true },

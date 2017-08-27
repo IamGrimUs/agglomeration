@@ -14,7 +14,7 @@
     <section class="profile-edit-page-menu">
       <div>
         <a href="./index.html">
-        <i class=" fa fa-arrow-circle-left fa-2x " aria-hidden="true"></i>
+        <i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
       </a>
       </div>
     </section>
@@ -51,9 +51,7 @@
               </div>
               <div>
                 <label for="telephone">Telephone (required):</label>
-                <input type="tel" id="telephone" name="telephone" value="" aria-describedby="telephone-format" required aria-required=”true”
-                  title="123-456-7890, +91 123-456-7890">
-                <span id="telephone-format" class="help">Format: 123-456-7890</span>
+                <input type="tel" id="telephone" name="telephone" value="" required aria-required=”true”>
               </div>
               <div>
                 <label for="position">Position Title (required):</label>
@@ -376,8 +374,8 @@
               </div>
             </section>
             <div>
-              <label for="departmentName">Department (required):</label>
-              <select id="departmentName" name="departmentName" required aria-required=”true”>
+              <label for="departmentId">Department (required):</label>
+              <select id="departmentId" name="departmentId" required aria-required=”true”>
 
               </select>
             </div>
@@ -401,10 +399,10 @@
       </section>
     </main>
     <section class="successMessage hidden">
-      <p></p>
+      <p>Thank you for submitting creating your profile. Welcome to the team!</p>
     </section>
     <section class="failureMessage hidden">
-      <p></p>
+      <p>Oh no, something went wrong. Please check the form and try again.</p>
     </section>
   </section>
   <script src="dist/bundle.js"></script>

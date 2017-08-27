@@ -21,7 +21,7 @@ export default class UserCard {
         .id}" class="profile-card ${this.user.departmentName
       .toLowerCase()
       .split(" ", 2)[0] + "-team"}" id="${this.user.id}">
-        <div>
+        <div class="profile-card-header">
           <h2>${this.user.firstName} ${this.user.lastName}</h2>
           <p>${this.user.departmentName}</p>
         </div>
@@ -123,8 +123,9 @@ export default class UserCard {
       .lastName}_profile.jpg" alt="${this.user.firstName} ${this.user
       .lastName}" class="profile-pic">
         </figure>
+        <h1 class="text-center profile-edit-headline">Please update your personal profile.</h1>
       </header>
-      <main role="main">
+      <main role="main" class="profile-edit-main">
         <section class="profile-information">
           <form class="profile-edit-form text-left" action="" method="put" id="profile-form">
             <fieldset>
@@ -157,9 +158,7 @@ export default class UserCard {
                 <div>
                   <label for="telephone">Telephone:</label>
                   <input type="tel" id="telephone" name="telephone" value="${this
-                    .user.telephone}" aria-describedby="telephone-format"
-                    title="123-456-7890, +91 123-456-7890">
-                  <span id="telephone-format" class="help">Format: 123-456-7890</span>
+                    .user.telephone}">
                 </div>
                 <div>
                   <label for="position">Position Title:</label>
@@ -171,19 +170,19 @@ export default class UserCard {
                 <div>
                   <label for="state">State:</label>
                   <select id="state" name="state">
-                    ${renderStates("#state", this.user.state)}
+                    ${renderStates(this.user.state)}
                   </select>
                 </div>
                 <div>
                   <label for="country">Country:</label>
                   <select id="country" name="country">
-                    ${renderCountries("#country", this.user.country)}
+                    ${renderCountries(this.user.country)}
                   </select>
                 </div>
               </section>
               <div>
-                <label for="departmentName">Department:</label>
-                <select id="departmentName" name="departmentName">
+                <label for="departmentId">Department:</label>
+                <select id="departmentId" name="departmentId">
                  ${getAllDepartments(this.user.departmentId)}
                 </select>
               </div>

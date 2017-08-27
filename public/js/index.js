@@ -61,7 +61,7 @@ function showDepartmentOptions(data, selectDepartmentId) {
     departmentOptionsArray.push(departmentModel);
     if (counter >= data.departments.length) {
       departmentModel.renderDepartmentOptions(
-        "#departmentName",
+        "#departmentId",
         departmentOptionsArray,
         selectDepartmentId
       );
@@ -122,6 +122,7 @@ function renderStates(userState) {
     "WV",
     "WY"
   ];
+  console.log(`the user state is: ${userState}`);
   let renderString = `<option value="" disabled="disabled" ${userState
     ? ""
     : "selected"}>Please select a State</option>`;
@@ -131,6 +132,7 @@ function renderStates(userState) {
       ? "selected"
       : ""}>${statesArray[i]}</option>`;
     renderString += option;
+    // console.log(`the render string is: ${renderString}`);
   }
   return renderString;
 }
@@ -385,6 +387,7 @@ function renderCountries(userCountry) {
     "Zambia",
     "Zimbabwe"
   ];
+  console.log(`the user country is ${userCountry}`);
   let renderString = `<option value="" disabled="disabled" ${userCountry
     ? ""
     : "selected"}>Please select a Country</option>`;
@@ -394,6 +397,7 @@ function renderCountries(userCountry) {
       ? "selected"
       : ""}>${countriesArray[i]}</option>`;
     renderString += option;
+    // console.log(`the reder string is: ${userCountry}`);
   }
   return renderString;
 }
@@ -407,9 +411,36 @@ function captureUserSubmission() {
       data: $("#profile-form").serialize(),
       success: function(json) {
         console.log("data recieved");
+        showSubmitSuccess(json);
+      },
+      error: function() {
+        showSubmitError();
       }
     });
   });
+}
+
+function showSubmitSuccess(json) {
+  console.log(json);
+  $(".successMessage").toggleClass("hidden");
+  setTimeout(function() {
+    window.location = `profile.html?id=${json.id}`;
+  }, 3000);
+}
+
+function showEditSubmitSuccess(userId) {
+  console.log(userId);
+  $(".successMessage").toggleClass("hidden");
+  setTimeout(function() {
+    window.location = `profile.html?id=${userId}`;
+  }, 3000);
+}
+
+function showSubmitError() {
+  $(".errorMessage").toggleClass("hidden");
+  setTimeout(function() {
+    $(".errorMessage").toggleClass("hidden");
+  }, 5000);
 }
 
 function captureUserEdit(userId) {
@@ -419,8 +450,12 @@ function captureUserEdit(userId) {
       url: `/user/${userId}`,
       type: "PUT",
       data: $("#profile-form").serialize(),
-      success: function(json) {
+      success: function() {
         console.log("data recieved");
+        showEditSubmitSuccess(userId);
+      },
+      error: function() {
+        showSubmitError();
       }
     });
   });

@@ -75,7 +75,6 @@ const createNewUser = (req, res) => {
       email: req.body.email,
       telephone: req.body.telephone,
       departmentId: req.body.departmentId,
-      departmentName: req.body.departmentName,
       position: req.body.position,
       state: req.body.state,
       country: req.body.country,
