@@ -471,9 +471,22 @@ function captureDepartmentSubmission() {
       data: $("#profile-form").serialize(),
       success: function(json) {
         console.log("data recieved");
+        showDepartmentSubmitSuccess(json);
+      },
+      error: function() {
+        showSubmitError();
       }
     });
   });
+}
+
+function showDepartmentSubmitSuccess(json) {
+  console.log(json);
+  $(".successMessage").toggleClass("hidden");
+  $("#name").val("");
+  setTimeout(function() {
+    $(".successMessage").toggleClass("hidden");
+  }, 3000);
 }
 
 export { getAllDepartments, renderStates, renderCountries };
