@@ -236,14 +236,17 @@ img {
   padding: 0 1em;
 }
 
-.search-by-name-menu {
-  margin-bottom: 2em;
-}
-
 .search-by-email-menu input,
 .search-by-name-menu input {
   height: 40px;
   width: 100%;
+}
+
+.search-by-name-menu select {
+  height: 60px;
+  width: 100%;
+  font-size: 1em;
+  margin-bottom: 2em;
 }
 
 .search {
@@ -659,10 +662,6 @@ figure.strategy-team {
   color: #fff;
 }
 
-.profile-card p {
-  font-family: 'Raleway', sans-serif;
-}
-
 .profile-card figure {
   position: relative;
   cursor: pointer;
@@ -729,10 +728,9 @@ figure.hover figcaption {
   margin-top: 1.5em;
 }
 
-.profile-card p,
-.profile-card a {
-  text-align: left;
-  color: #333;
+.profile-card figcaption a {
+  display: block;
+  text-decoration: none;
 }
 
 .profile-card h2 {
@@ -743,38 +741,38 @@ figure.hover figcaption {
 
 .profile-card p,
 .profile-card a {
-  font-size: 1.25em;
-  margin-top: .25em;
+  color: #333;
   font-family: 'Raleway', sans-serif;
+  font-size: 1em;
+  margin-top: .5em;
+  text-align: left;
 }
 
-.profile-card figcaption a {
-  display: block;
-  text-decoration: none;
+.profile-card a:hover {
+  color: #77923d;
 }
 
-.profile-card figcaption p:last-child {
+.profile-card h2 {
+  font-size: 1.5em;
+  color: #fff;
+  text-align: left;
+}
+.profile-card h2 {
+  font-size: 1.5em;
+  color: #fff;
+  text-align: left;
+}
+
+/* .profile-card figcaption p:last-child {
   margin-top: 2em;
-}
+} */
 
 .profile-menu {
   color: #fff;
   background-color: #333;
 }
-
 .profile-menu i {
   padding-right: .5em;
-}
-
-.profile-menu a {
-  color: #fff;
-  text-decoration: none;
-  display: inline-block;
-  width: 100%;
-  padding: .75em 1em;
-}
-.profile-menu a:hover {
-  color: #77923d;
 }
 
 /* -----------------------------------------------------------------------------

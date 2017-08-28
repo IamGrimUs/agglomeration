@@ -61,6 +61,28 @@ function showDepartmentOptions(data, selectDepartmentId) {
   }
 }
 
+function getAllDepartmentsIndexMenu() {
+  $.get("/department").then(data => {
+    showDepartmentOptionsIndexMenu(data);
+  });
+}
+
+function showDepartmentOptionsIndexMenu(data) {
+  let counter = 0;
+  let departmentOptionsArray = [];
+  for (let department of data.departments) {
+    const departmentModel = new DepartmentOptions(department);
+    counter++;
+    departmentOptionsArray.push(departmentModel);
+    if (counter >= data.departments.length) {
+      departmentModel.renderDepartmentOptions(
+        "#departmentId",
+        departmentOptionsArray
+      );
+    }
+  }
+}
+
 function renderStates(userState) {
   let statesArray = [
     "AK",
@@ -542,6 +564,47 @@ function showDepartmentForDeletionSubmitSuccess() {
   }, 1500);
 }
 
+function searchMenu() {
+  $("#site-search-menu").on("submit", function(e) {
+    e.preventDefault();
+    let email = $("#searchEmail").val();
+    let name = $("#searchName").val();
+    let [firstName, lastName] = name.split(" ");
+    let departmentId = $("#departmentId").val();
+    let searchTerm = "?";
+    if (email != "") {
+      searchTerm += `email=${email}&`;
+    }
+    if (firstName != "") {
+      searchTerm += `firstName=${firstName}&`;
+    }
+    if (lastName) {
+      searchTerm += `lastName=${lastName}&`;
+    }
+    if (departmentId) {
+      searchTerm += `departmentId=${departmentId}`;
+    }
+    if (searchTerm[searchTerm.length - 1] === "&") {
+      console.log("there is  a &");
+    }
+
+    console.log(searchTerm);
+    $.ajax({
+      url: `/search/${searchTerm}`,
+      type: "GET",
+      data: $("#profile-form").serialize(),
+      success: function(json) {
+        console.log("data recieved");
+        // showSubmitSuccess(json);
+      },
+      error: function() {
+        // showSubmitError();
+        console.log("error");
+      }
+    });
+  });
+}
+
 export { getAllDepartments, renderStates, renderCountries };
 
 (function(window) {
@@ -549,6 +612,8 @@ export { getAllDepartments, renderStates, renderCountries };
 
   entryPoints.runIndex = () => {
     getAllUsers();
+    getAllDepartmentsIndexMenu();
+    searchMenu();
   };
 
   entryPoints.runProfile = () => {

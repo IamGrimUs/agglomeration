@@ -21,67 +21,33 @@
         <i class="fa fa-window-close fa-3x" aria-hidden="true"></i>
       </button>
     </div>
-    <section class="profile-menu">
-      <a href="profile-create.html">
-        <i class="fa fa-user fa-2x" aria-hidden="true"></i>
-        create user profile
-      </a>
-    </section>
-    <section class="search-by-email-menu">
-      <label for="searchEmail">search by email</label>
-      <input type="searchEmail" id="searchEmail" name="searchEmail" value="" aria-describedby="email-format" class="search-bar">
-      <span id="email-format" class="help">Format: jdoe@email.com</span>
-    </section>
-    <section class="search-by-name-menu">
-      <label for="searchName">search by name</label>
-      <input type="searchName" id="searchName" name="searchName" value="" aria-describedby="name-format" class="search-bar">
-      <span id="name-format" class="help">Format: John Doe</span>
-    </section>
-    <section class="departments">
-      <p class="navagation-section-header">
-        search by departments
-      </p>
-      <ul>
-        <li>
-          <label>Account Management
-            <input type="checkbox" value="1" name="account-management"/>
-          </label>
-        </li>
-        <li>
-          <label>Campaign &amp; Technical Services
-            <input type="checkbox" value="2" name="campaign-service"/>
-          </label>
-        </li>
-        <li>
-          <label>Creative
-            <input type="checkbox" value="3" name="creative-service"/>
-          </label>
-        </li>
-        <li>
-          <label>Labs
-            <input type="checkbox" value="4" name="labs"/>
-          </label>
-        </li>
-        <li>
-          <label>Operations
-             <input type="checkbox" value="5" name="operations"/>
-          </label>
-        </li>
-        <li>
-          <label>Quality Assurance
-            <input type="checkbox" value="6" name=" & Anal"/>
-          </label>
-        </li>
-        <li>
-          <label>Strategy & Analytics
-            <input type="checkbox" value="6" name=" & Anal"/>
-          </label>
-        </li>
-        <li>
-          <button type="submit" class="search">submit</button>
-        </li>
-      </ul>
-    </section>
+    <form class="site-search-menu" action="" method="" id="site-search-menu">
+      <fieldset>
+        <section class="profile-menu">
+          <a href="profile-create.html">
+            <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+            create user profile
+          </a>
+        </section>
+        <section class="search-by-email-menu">
+          <label for="searchEmail">search by email</label>
+          <input type="searchEmail" id="searchEmail" name="searchEmail" value="" aria-describedby="email-format" class="search-bar">
+          <span id="email-format" class="help">Format: jdoe@email.com</span>
+        </section>
+        <section class="search-by-name-menu">
+          <label for="searchName">search by name</label>
+          <input type="searchName" id="searchName" name="searchName" value="" aria-describedby="name-format" class="search-bar">
+          <span id="name-format" class="help">Format: John Doe</span>
+        </section>
+        <section class="search-by-name-menu">
+          <label for="departmentId">search by department</label>
+          <select id="departmentId" name="departmentId">
+
+          </select>
+          <button type="submit" class="search" id="searchMenuSubmit" name="searchMenuSubmit">submit</button>
+        </section>
+      </fieldset>
+    </form>
   </nav>
   <!-- <p class="applied-filter-list">
     display all

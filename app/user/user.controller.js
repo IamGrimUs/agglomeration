@@ -29,14 +29,14 @@ const findUserById = (req, res) => {
 
 const searchUser = (req, res) => {
   let query = {};
-  const departmentIds = JSON.parse(req.query.departmentIds);
+  const departmentId = JSON.parse(req.query.departmentId);
   const email = req.query.email;
   const firstName = req.query.firstName;
   const lastName = req.query.lastName;
 
-  if (departmentIds) {
+  if (departmentId) {
     query.departmentId = {
-      $in: departmentIds
+      $in: departmentId
     };
   }
 
