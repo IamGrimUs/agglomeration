@@ -211,13 +211,28 @@ export default class UserCard {
     `);
   }
 
-  // checkForValue(valueToCheck) {
-  //   if( valueToCheck != '') {
-  //     return valueToCheck;
-  //   } else {
+  renderUserProfileDelete(containerForAppending, userList) {
+    console.log(userList);
 
-  //   }
-  // }
+    function SortByName(a, b) {
+      var aName = a.fullName.toLowerCase();
+      var bName = b.fullName.toLowerCase();
+      return aName < bName ? -1 : aName > bName ? 1 : 0;
+    }
+
+    userList.sort(SortByName);
+
+    let renderString = `
+      <option value="" disabled="disabled" selected>Please select a user</option>
+    `;
+    for (let i = 0; i < userList.length; i++) {
+      let option = `<option value="${userList[i].id}">${userList[i]
+        .fullName}</option>`;
+      renderString += option;
+    }
+
+    $(containerForAppending).append(renderString);
+  }
 
   verifyUserData(obj) {
     var result = "";

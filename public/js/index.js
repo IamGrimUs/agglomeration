@@ -29,14 +29,6 @@ function showSingleUser(data) {
   card.renderUserLink(".edit-link-containter");
 }
 
-// function createUser() {
-//   $.post(`/user/`);
-// }
-
-// function editUser(userId) {
-//   $.post(`/user/${userId}`);
-// }
-
 function getSingleUserEdit(userId) {
   return $.get(`/user/${userId}`).then(showSingleUserEdit);
 }
@@ -122,7 +114,6 @@ function renderStates(userState) {
     "WV",
     "WY"
   ];
-  console.log(`the user state is: ${userState}`);
   let renderString = `<option value="" disabled="disabled" ${userState
     ? ""
     : "selected"}>Please select a State</option>`;
@@ -132,7 +123,6 @@ function renderStates(userState) {
       ? "selected"
       : ""}>${statesArray[i]}</option>`;
     renderString += option;
-    // console.log(`the render string is: ${renderString}`);
   }
   return renderString;
 }
@@ -387,7 +377,6 @@ function renderCountries(userCountry) {
     "Zambia",
     "Zimbabwe"
   ];
-  console.log(`the user country is ${userCountry}`);
   let renderString = `<option value="" disabled="disabled" ${userCountry
     ? ""
     : "selected"}>Please select a Country</option>`;
@@ -397,7 +386,6 @@ function renderCountries(userCountry) {
       ? "selected"
       : ""}>${countriesArray[i]}</option>`;
     renderString += option;
-    // console.log(`the reder string is: ${userCountry}`);
   }
   return renderString;
 }
@@ -480,6 +468,45 @@ function captureDepartmentSubmission() {
   });
 }
 
+function showUsersForDeletion() {
+  $.get("/user").then(showUserList);
+}
+
+function showUserList(data) {
+  const card = new UserCard(data);
+  let userList = [];
+  for (let i = 0; i < data.users.length; i++) {
+    userList.push(data.users[i]);
+  }
+  card.renderUserProfileDelete("#userId", userList);
+}
+
+function captureUserForDelete() {
+  $("#profile-form").on("submit", function(e) {
+    e.preventDefault();
+    let userId = $(this).find("[name=userId]").val();
+    console.log(userId);
+    $.ajax({
+      url: `/user/${userId}`,
+      type: "DELETE",
+      data: $("#profile-form").serialize(),
+      success: function() {
+        showUserDeleteSubmitSuccess();
+      },
+      error: function() {
+        showSubmitError();
+      }
+    });
+  });
+}
+
+function showUserDeleteSubmitSuccess() {
+  $(".successMessage").toggleClass("hidden");
+  setTimeout(function() {
+    window.location = "index.html";
+  }, 1500);
+}
+
 function showDepartmentSubmitSuccess() {
   $(".successMessage").toggleClass("hidden");
   $("#name").val("");
@@ -488,7 +515,7 @@ function showDepartmentSubmitSuccess() {
   }, 1500);
 }
 
-function captureDepartmentForDeletion(departmentId) {
+function captureDepartmentForDeletion() {
   $("#profile-form").on("submit", function(e) {
     e.preventDefault();
     let departmentId = $(this).find("[name=departmentId]").val();
@@ -549,13 +576,18 @@ export { getAllDepartments, renderStates, renderCountries };
     });
   };
 
+  entryPoints.runProfileDelete = () => {
+    showUsersForDeletion();
+    captureUserForDelete();
+  };
+
   entryPoints.runDepartmentCreate = () => {
     captureDepartmentSubmission();
   };
 
   entryPoints.runDepartmentDelete = () => {
     getAllDepartments();
-    captureDepartmentForDeletion(departmentId);
+    captureDepartmentForDeletion();
   };
 
   window.EntryPoints = entryPoints;
