@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Agglomeration</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="https://use.fontawesome.com/4bfcf39c44.js"></script>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <section class="site-title-container">
+    <h1 class="site-title">Agglomeration</h1>
+    <p>An app for connecting individules and quickly viewing small user details. Such as contact information or personal stories.</p>
+  </section>
+  <section>
+    <form class="user-login">
+      <fieldset>
+        <!-- <label for="user-first-name">First name:</label>
+        <input type="text" name="user-first-name" id="user-first-name" class="user-first-name">
+        <label for="user-last-name">Last name:</label>
+        <input type="text" name="user-last-name" id="user-last-name" class="user-last-name"> -->
+        <label for="userEmail">Email (required):</label>
+        <input type="text" name="userEmail" id="user-email" class="user-email" value="" required aria-required=”true”>
+        <label for="userPassword">Password (required):</label>
+        <input type="text" name="userPassword" id="user-password" class="user-password" value="" required aria-required=”true”>
+        <button type="submit" class="login-submit-button" id="login-submit-button" name="login-submit-button">submit</button>
+      </fieldset>
+    </form>
+  </section>
+  <script src="dist/bundle.js"></script>
+  <script>
+    EntryPoints.runUserLogin();
+  </script>
+</body>
+
+</html>

@@ -1,3 +1,4 @@
+const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const departmentModel = require("../department/department.model");
 
@@ -5,7 +6,7 @@ const userSchema = mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   biography: { type: String },
-  email: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
   telephone: { type: String, required: true },
   departmentId: { type: String, required: true },
   departmentName: { type: String },
@@ -14,7 +15,7 @@ const userSchema = mongoose.Schema({
   country: { type: String, required: true },
   favoritePartOfDay: { type: String },
   hobbies: { type: String },
-  permission: { type: String },
+  permission: { type: Number },
   password: { type: String, required: true },
   salt: { type: String }
 });
@@ -43,6 +44,14 @@ userSchema.methods.toClient = async function() {
     favoritePartOfDay: this.favoritePartOfDay,
     hobbies: this.hobbies
   };
+};
+
+userSchema.methods.validatePassword = function(password) {
+  return bcrypt.compare(password, this.password);
+};
+
+userSchema.statics.hashPassword = function(password) {
+  return bcrypt.hash(password, 10);
 };
 
 const user = mongoose.model("user", userSchema);

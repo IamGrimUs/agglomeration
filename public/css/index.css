@@ -121,7 +121,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -140,7 +140,7 @@ table {
 
 body {
   background-color: #f3f3f3;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   line-height: 1.25;
   padding-bottom: 4em;
 }
@@ -189,7 +189,7 @@ img {
   margin: 0 auto;
   max-width: 98%;
   padding-top: 1em;
-  padding-right: .5em;
+  padding-right: 0.5em;
 }
 
 .menu-button-container {
@@ -201,7 +201,7 @@ img {
   bottom: 0;
   left: 0;
   margin-left: 1em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   z-index: 100;
 }
 
@@ -214,7 +214,7 @@ img {
 }
 
 .navagation-section-header {
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   margin-top: 1em;
   font-size: 1em;
   font-weight: 700;
@@ -226,7 +226,7 @@ img {
 .search-by-name-menu label {
   font-weight: 700;
   color: #000000;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 0;
   margin-top: 1em;
 }
@@ -317,8 +317,8 @@ body.has-active-menu {
   display: inline-block;
   width: 100%;
   padding: 1em 0;
-  font-family: 'Raleway', sans-serif;
-  letter-spacing: .5px;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .c-menu input {
@@ -655,7 +655,7 @@ figure.strategy-team {
 .profile-card {
   line-height: 1.25;
   cursor: pointer;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .profile-card .profile-card-header p {
@@ -690,16 +690,16 @@ figure.strategy-team {
   -webkit-transform: rotateY(-180deg);
   -moz-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .profile-card figure img {
   backface-visibility: hidden;
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .profile-card figure:hover img,
@@ -721,7 +721,7 @@ figure.hover figcaption {
 
 .profile-card div,
 .profile-card figcaption {
-  padding: 1em .75em 1em .75em;
+  padding: 1em 0.75em 1em 0.75em;
 }
 
 .profile-card figcaption {
@@ -742,9 +742,9 @@ figure.hover figcaption {
 .profile-card p,
 .profile-card a {
   color: #333;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1em;
-  margin-top: .5em;
+  margin-top: 0.5em;
   text-align: left;
 }
 
@@ -772,7 +772,7 @@ figure.hover figcaption {
   background-color: #333;
 }
 .profile-menu i {
-  padding-right: .5em;
+  padding-right: 0.5em;
 }
 
 /* -----------------------------------------------------------------------------
@@ -787,7 +787,7 @@ figure.hover figcaption {
   padding-top: 1em;
   padding-bottom: 4em;
   background-color: #fff;
-  box-shadow: 0px 0px 6px 4px rgba(0, 0, 0, .2);
+  box-shadow: 0px 0px 6px 4px rgba(0, 0, 0, 0.2);
   position: relative;
 }
 
@@ -833,7 +833,7 @@ figure.hover figcaption {
 
 .profile-page-menu i {
   color: #ffffff;
-  margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 .profile-page-menu a:hover,
@@ -861,7 +861,7 @@ figure.hover figcaption {
   color: #333;
   text-decoration: none;
   border-bottom: 2px solid #ffffff;
-  padding-bottom: .25em;
+  padding-bottom: 0.25em;
 }
 
 .profile-information a:hover {
@@ -895,7 +895,7 @@ figure.hover figcaption {
 }
 
 .personal-information .profile-category-headline {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .personal-information p {
@@ -909,8 +909,8 @@ figure.hover figcaption {
 }
 
 .contact-information-layout p {
-  margin-bottom: 1.10em;
-  font-family: 'Raleway', sans-serif;
+  margin-bottom: 1.1em;
+  font-family: "Raleway", sans-serif;
 }
 
 .contact-information-layout p:last-child {
@@ -918,11 +918,11 @@ figure.hover figcaption {
 }
 
 .profile-category-headline {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1em;
   font-weight: 700;
   display: block;
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
 }
 
 /* -----------------------------------------------------------------------------
@@ -946,18 +946,18 @@ figure.hover figcaption {
   clear: both;
 }
 
-.profile-edit-header  h1.profile-edit-headline {
+.profile-edit-header h1.profile-edit-headline {
   text-align: left;
   color: #333;
   font-weight: 700;
   margin-top: 1.5em;
   margin-bottom: 1em;
   font-size: 2.25em;
-  margin-left: .4em;
+  margin-left: 0.4em;
 }
 
 @media screen and (min-width: 600px) {
-  .profile-edit-header  h1.profile-edit-headline {
+  .profile-edit-header h1.profile-edit-headline {
     width: 50%;
     margin: 0 auto;
     margin-top: 2em;
@@ -977,7 +977,7 @@ figure.hover figcaption {
 
 .profile-edit-form select {
   display: block;
-  margin-top: .5em;
+  margin-top: 0.5em;
   height: 60px;
   font-size: 1em;
   width: 100%;
@@ -1002,13 +1002,13 @@ figure.hover figcaption {
 
 .profile-edit-form input {
   display: block;
-  margin-top: .5em;
+  margin-top: 0.5em;
   width: 100%;
 }
 .profile-edit-form textarea {
   display: block;
-  margin-top: .5em;
-  padding: .75em .5em;
+  margin-top: 0.5em;
+  padding: 0.75em 0.5em;
   width: 100%;
   font-size: 1em;
 }
@@ -1023,7 +1023,7 @@ figure.hover figcaption {
 }
 
 .help {
-  margin-top: .5em;
+  margin-top: 0.5em;
   display: none;
   font-size: 90%;
   color: #666;
@@ -1033,7 +1033,7 @@ input {
   border: none;
   height: 60px;
   font-size: 1em;
-  padding-left: .5em;
+  padding-left: 0.5em;
   border-radius: 4px;
 }
 
@@ -1065,12 +1065,12 @@ select {
   height: 60px;
   border: 2px solid #77923d;
   border-radius: 8px;
-  padding: .25em .75em;
+  padding: 0.25em 0.75em;
   background-color: #333;
   color: #fff;
   font-size: 1.5em;
-  transition: all .5s;
-  letter-spacing: .5px;
+  transition: all 0.5s;
+  letter-spacing: 0.5px;
 }
 
 .profile-submit:hover {
@@ -1096,8 +1096,8 @@ select {
   text-align: left;
   color: #333;
   font-weight: 700;
-  margin-top: .5em;
-  margin-bottom: .15em;
+  margin-top: 0.5em;
+  margin-bottom: 0.15em;
   font-size: 2.25em;
 }
 
@@ -1112,9 +1112,30 @@ select {
 }
 
 .department-creation-container h1 {
-  padding-left: .5em;
+  padding-left: 0.5em;
 }
 
 .department-creation-container p {
   padding: 1em;
+}
+
+/* login page */
+form.user-login {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1em;
+}
+form.user-login label,
+form.user-login input {
+  display: block;
+  width: 50%;
+}
+form.user-login label {
+  margin-bottom: 0.5em;
+}
+form.user-login input {
+  margin-bottom: 1.5em;
+}
+
+.login-submit-button {
 }

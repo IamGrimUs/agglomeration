@@ -8,6 +8,7 @@ function getAllUsers() {
 }
 
 function showAllUsers(data) {
+  $(".wrapper1").html("");
   let counter = 0;
   for (let user of data.users) {
     const card = new UserCard(user);
@@ -586,16 +587,46 @@ function searchMenu() {
     }
     if (searchTerm[searchTerm.length - 1] === "&") {
       console.log("there is  a &");
+      searchTerm.substr(0, searchTerm.length - 1);
     }
-
+    $("#searchEmail").val("");
+    $("#searchName").val("");
+    $("#departmentId").val("");
     console.log(searchTerm);
     $.ajax({
-      url: `/search/${searchTerm}`,
+      url: `/user/search/${searchTerm}`,
       type: "GET",
       data: $("#profile-form").serialize(),
       success: function(json) {
         console.log("data recieved");
-        // showSubmitSuccess(json);
+        showAllUsers(json);
+      },
+      error: function() {
+        // showSubmitError();
+        console.log("error");
+      }
+    });
+  });
+  searchReset();
+}
+
+function searchReset() {
+  $("#reset-button").click(() => {
+    getAllUsers();
+    console.log("hello");
+  });
+}
+
+function captureUserlogin() {
+  $(".user-login").on("submit", function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: "/auth/login",
+      type: "POST",
+      data: $(".user-login").serialize(),
+      success: function(json) {
+        console.log("data recieved");
+        window.location = "index.html";
       },
       error: function() {
         // showSubmitError();
@@ -655,5 +686,8 @@ export { getAllDepartments, renderStates, renderCountries };
     captureDepartmentForDeletion();
   };
 
+  entryPoints.runUserLogin = () => {
+    captureUserlogin();
+  };
   window.EntryPoints = entryPoints;
 })(window);

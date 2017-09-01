@@ -24,6 +24,12 @@
     <form class="site-search-menu" action="" method="" id="site-search-menu">
       <fieldset>
         <section class="profile-menu">
+          <a href="profile-edit.html">
+            <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+            update user profile
+          </a>
+        </section>
+        <section class="profile-menu">
           <a href="profile-create.html">
             <i class="fa fa-user fa-2x" aria-hidden="true"></i>
             create user profile
@@ -31,12 +37,12 @@
         </section>
         <section class="search-by-email-menu">
           <label for="searchEmail">search by email</label>
-          <input type="searchEmail" id="searchEmail" name="searchEmail" value="" aria-describedby="email-format" class="search-bar">
+          <input type="email" id="searchEmail" name="searchEmail" value="" aria-describedby="email-format" class="search-bar">
           <span id="email-format" class="help">Format: jdoe@email.com</span>
         </section>
         <section class="search-by-name-menu">
           <label for="searchName">search by name</label>
-          <input type="searchName" id="searchName" name="searchName" value="" aria-describedby="name-format" class="search-bar">
+          <input type="name" id="searchName" name="searchName" value="" aria-describedby="name-format" class="search-bar">
           <span id="name-format" class="help">Format: John Doe</span>
         </section>
         <section class="search-by-name-menu">
@@ -48,6 +54,7 @@
         </section>
       </fieldset>
     </form>
+    <button class="reset-button" id="reset-button" name="reset-button">reset</button>
   </nav>
   <!-- <p class="applied-filter-list">
     display all

@@ -2,15 +2,24 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./app/user/user.routes");
 const departmentRouter = require("./app/department/department.routes");
+const passport = require("passport");
+const authRouter = require("./app/auth/routes");
 const { PORT, DATABASE_URL } = require("./config");
+
+const { basicStrategy, jwtStrategy } = require("./app/auth/strategies");
 
 const app = express();
 app.use(express.static("public"));
 
 mongoose.Promise = global.Promise;
 
+app.use(passport.initialize());
+passport.use(basicStrategy);
+passport.use(jwtStrategy);
+
 app.use("/user", userRouter);
 app.use("/department", departmentRouter);
+app.use("/auth", authRouter);
 
 let server;
 
