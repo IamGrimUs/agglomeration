@@ -1,9 +1,9 @@
-const passport = require("passport");
-const { BasicStrategy } = require("passport-http");
-const { Strategy: JwtStrategy, ExtractJwt } = require("passport-jwt");
+const passport = require('passport');
+const { BasicStrategy } = require('passport-http');
+const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 
-const User = require("../user/user.model");
-const { JWT_SECRET } = require("../../config");
+const User = require('../user/user.model');
+const { JWT_SECRET } = require('../../config');
 
 const basicStrategy = new BasicStrategy((userEmail, userPassword, callback) => {
   let user;
@@ -14,8 +14,8 @@ const basicStrategy = new BasicStrategy((userEmail, userPassword, callback) => {
         // Return a rejected promise so we break out of the chain of .thens.
         // Any errors like this will be handled in the catch block.
         return Promise.reject({
-          reason: "LoginError",
-          message: "Incorrect email or password"
+          reason: 'LoginError',
+          message: 'Incorrect email or password'
         });
       }
       return user.validatePassword(password);
@@ -23,14 +23,14 @@ const basicStrategy = new BasicStrategy((userEmail, userPassword, callback) => {
     .then(isValid => {
       if (!isValid) {
         return Promise.reject({
-          reason: "LoginError",
-          message: "Incorrect email or password"
+          reason: 'LoginError',
+          message: 'Incorrect email or password'
         });
       }
       return callback(null, user);
     })
     .catch(err => {
-      if (err.reason === "LoginError") {
+      if (err.reason === 'LoginError') {
         return callback(null, false, err);
       }
       return callback(err, false);
@@ -41,9 +41,9 @@ const jwtStrategy = new JwtStrategy(
   {
     secretOrKey: JWT_SECRET,
     // Look for the JWT as a Bearer auth header
-    jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("Bearer"),
+    jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
     // Only allow HS256 tokens - the same as the ones we issue
-    algorithms: ["HS256"]
+    algorithms: ['HS256']
   },
   (payload, done) => {
     done(null, payload.user);
