@@ -7,18 +7,15 @@ const morgan = require('morgan');
 const authRouter = require('./app/auth/auth.routes');
 const { PORT, DATABASE_URL } = require('./config');
 
-const { basicStrategy, jwtStrategy } = require('./app/auth/auth.strategies');
+const { jwtStrategy } = require('./app/auth/auth.strategies');
 
 const app = express();
-app.use(express.static('public'));
 
 mongoose.Promise = global.Promise;
 
-// use morgan to log request to the console
+app.use(express.static('public'));
 app.use(morgan('dev'));
-
 app.use(passport.initialize());
-passport.use(basicStrategy);
 passport.use(jwtStrategy);
 
 app.use('/user', userRouter);
@@ -26,6 +23,20 @@ app.use('/department', departmentRouter);
 app.use('/auth', authRouter);
 
 let server;
+
+app.get('/', (req, res) => {
+  if (!req.isAuthenticated()) {
+    res.redirect('/login');
+    return res.status(401).json({ message: 'Not logged in' });
+  }
+  res.status(200).sendFile(__dirname + '/public/index.html', {
+    user: req.user.toClient()
+  });
+});
+
+app.get('/login', (req, res) => {
+  res.status(200).sendFile(__dirname + '/public/login.html');
+});
 
 function runServer(databaseUrl = DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {

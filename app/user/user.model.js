@@ -1,6 +1,6 @@
-const bcrypt = require("bcryptjs");
-const mongoose = require("mongoose");
-const departmentModel = require("../department/department.model");
+const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
+const departmentModel = require('../department/department.model');
 
 const userSchema = mongoose.Schema({
   firstName: { type: String, required: true },
@@ -16,11 +16,11 @@ const userSchema = mongoose.Schema({
   favoritePartOfDay: { type: String },
   hobbies: { type: String },
   permission: { type: Number },
-  password: { type: String, required: true },
-  salt: { type: String }
+  password: { type: String, required: true }
+  // salt: { type: String }
 });
 
-userSchema.virtual("fullName").get(function() {
+userSchema.virtual('fullName').get(function() {
   return `${this.firstName} ${this.lastName}`.trim();
 });
 
@@ -54,7 +54,7 @@ userSchema.statics.hashPassword = function(password) {
   return bcrypt.hash(password, 10);
 };
 
-const user = mongoose.model("user", userSchema);
+const user = mongoose.model('user', userSchema);
 
 async function getDepartment(id) {
   if (!id) return;

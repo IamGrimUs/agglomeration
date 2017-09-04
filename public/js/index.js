@@ -3,10 +3,6 @@ import UserCard from './userCard';
 import DepartmentOptions from './departmentOptions';
 import './menu';
 
-// =================
-// routes ==========
-// =================
-
 function getAllUsers() {
   $.get('/user').then(showAllUsers);
 }
@@ -627,6 +623,8 @@ function searchReset() {
 
 function captureUserlogin() {
   $('.user-login').on('submit', function(e) {
+    console.log('user email is: ', $('.user-email').val());
+    console.log('user password is: ', $('.user-password').val());
     e.preventDefault();
     $.ajax({
       url: '/auth/login',
