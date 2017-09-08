@@ -121,7 +121,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
@@ -140,7 +140,7 @@ table {
 
 body {
   background-color: #f3f3f3;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   line-height: 1.25;
   padding-bottom: 4em;
 }
@@ -226,13 +226,14 @@ img {
 .search-by-name-menu label {
   font-weight: 700;
   color: #000000;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   padding: 0;
   margin-top: 1em;
 }
 
 .search-by-email-menu,
-.search-by-name-menu {
+.search-by-name-menu,
+.search-menu-buttons {
   padding: 0 1em;
 }
 
@@ -249,7 +250,8 @@ img {
   margin-bottom: 2em;
 }
 
-.search {
+.search,
+.reset-button {
   width: 100%;
   background-color: #333;
   color: #fff;
@@ -257,10 +259,25 @@ img {
   font-size: 1.5em;
   border: none;
   border-bottom: 4px solid #77923d;
+  border-radius: 0.25em;
+}
+
+.search {
+  border-bottom: 4px solid #77923d;
 }
 
 .search:hover {
   background-color: #77923d;
+  border-bottom: 4px solid #333;
+}
+
+.reset-button {
+  margin-top: 1em;
+  border-bottom: 4px solid #cf2347;
+}
+
+.reset-button:hover {
+  background-color: #cf2347;
   border-bottom: 4px solid #333;
 }
 
@@ -317,7 +334,7 @@ body.has-active-menu {
   display: inline-block;
   width: 100%;
   padding: 1em 0;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   letter-spacing: 0.5px;
 }
 
@@ -742,7 +759,7 @@ figure.hover figcaption {
 .profile-card p,
 .profile-card a {
   color: #333;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1em;
   margin-top: 0.5em;
   text-align: left;
@@ -770,11 +787,20 @@ figure.hover figcaption {
 .profile-menu {
   color: #fff;
   background-color: #333;
+  margin: 1em 0.5em;
+  padding: 1em;
+  border-radius: 0.25em;
 }
 .profile-menu i {
   padding-right: 0.5em;
 }
-
+.profile-menu a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.profile-menu a:hover {
+  color: #77923d;
+}
 /* -----------------------------------------------------------------------------
 
   profile page
@@ -910,7 +936,7 @@ figure.hover figcaption {
 
 .contact-information-layout p {
   margin-bottom: 1.1em;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .contact-information-layout p:last-child {
@@ -918,7 +944,7 @@ figure.hover figcaption {
 }
 
 .profile-category-headline {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1em;
   font-weight: 700;
   display: block;
@@ -1138,4 +1164,6 @@ form.user-login input {
 }
 
 .login-submit-button {
+}
+.reset-button {
 }

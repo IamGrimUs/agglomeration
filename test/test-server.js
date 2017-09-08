@@ -265,6 +265,7 @@ describe('User API resource', function() {
     // the data was inserted into db)
     it('should add a new user', function() {
       const newUser = generateUserData();
+      console.log(newUser);
       return chai
         .request(app)
         .post('/user/')
@@ -274,38 +275,36 @@ describe('User API resource', function() {
           res.should.be.json;
           res.body.should.be.a('object');
           res.body.should.include.keys(
+            'id',
             'firstName',
             'lastName',
+            'fullName',
             'email',
             'telephone',
             'biography',
             'position',
             'departmentId',
             'departmentName',
-            'state',
             'country',
-            'favoritePartOfDay',
-            'hobbies',
-            'password'
+            'hobbies'
           );
           // cause Mongo should have created id on insertion
           res.body.id.should.not.be.null;
-          res.body.fistName.should.equal(newUser.firstName);
+          res.body.firstName.should.equal(newUser.firstName);
           res.body.lastName.should.equal(newUser.lastName);
           res.body.email.should.equal(newUser.email);
           res.body.telephone.should.equal(newUser.telephone);
           res.body.biography.should.equal(newUser.biography);
           res.body.position.should.equal(newUser.position);
           res.body.departmentId.should.equal(newUser.departmentId);
-          res.body.departmentName.should.equal(newUser.departmentName);
-          res.body.state.should.equal(newUser.state);
-          res.body.country.should.equal(newUser.country);
-          res.body.favoritePartOfDay.should.equal(newUser.favoritePartOfDay);
           res.body.hobbies.should.equal(newUser.hobbies);
-          res.body.password.should.equal(newUser.password);
+          res.body.country.should.equal(newUser.country);
+          return User.findById(res.body.id);
         })
         .then(function(user) {
-          user.fullName.should.equal(newUser.fullName);
+          user.fullName.should.equal(
+            newUser.firstName + ' ' + newUser.lastName
+          );
           user.firstName.should.equal(newUser.firstName);
           user.lastName.should.equal(newUser.lastName);
           user.email.should.equal(newUser.email);
@@ -313,12 +312,8 @@ describe('User API resource', function() {
           user.biography.should.equal(newUser.biography);
           user.position.should.equal(newUser.position);
           user.departmentId.should.equal(newUser.departmentId);
-          user.departmentName.should.equal(newUser.departmentName);
-          user.state.should.equal(newUser.state);
           user.country.should.equal(newUser.country);
-          user.favoritePartOfDay.should.equal(newUser.favoritePartOfDay);
           user.hobbies.should.equal(newUser.hobbies);
-          user.password.should.equal(newUser.password);
         });
     });
   });

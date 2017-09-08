@@ -11,7 +11,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.get('/search', userController.searchUser);
 router.get('/', userController.findAllUsers);
 router.get('/:userId', userController.findUserById);
-router.post('/', jsonParser, userController.createUserLogin);
+//router.post('/', jsonParser, userController.createUserLogin);
 router.post('/', userController.createNewUser);
 router.put('/:userId', userController.updateUserById);
 router.delete('/:userId', userController.deleteUserById);
