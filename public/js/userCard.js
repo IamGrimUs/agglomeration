@@ -1,7 +1,7 @@
-import $ from "jquery";
-import { getAllDepartments } from "./index";
-import { renderStates } from "./index";
-import { renderCountries } from "./index";
+import $ from 'jquery';
+import { getAllDepartments } from './index';
+import { renderStates } from './index';
+import { renderCountries } from './index';
 
 export default class UserCard {
   constructor(user) {
@@ -9,9 +9,9 @@ export default class UserCard {
   }
 
   setHandlers(itemToClick) {
-    $(itemToClick).on("click", ".profile-card", function(event) {
+    $(itemToClick).on('click', '.profile-card', function(event) {
       event.preventDefault();
-      window.location = `profile.html?id=${$(this).attr("data-userId")}`;
+      window.location = `profile.html?id=${$(this).attr('data-userId')}`;
     });
   }
 
@@ -20,7 +20,7 @@ export default class UserCard {
       <div data-userId="${this.user
         .id}" class="profile-card ${this.user.departmentName
       .toLowerCase()
-      .split(" ", 2)[0] + "-team"}" id="${this.user.id}">
+      .split(' ', 2)[0] + '-team'}" id="${this.user.id}">
         <div class="profile-card-header">
           <h2>${this.user.firstName} ${this.user.lastName}</h2>
           <p>${this.user.departmentName}</p>
@@ -30,8 +30,8 @@ export default class UserCard {
       .lastName}.jpg" alt="${this.user.firstName} ${this.user.lastName}">
           <figcaption>
             <p>${this.user.position}</p>
-            <a href="mailto:${this.user.email}">${this.user.email}</a>
-            <a href="tel:${this.user.telephone}">${this.user.telephone}</a>
+            <p>${this.user.email}</p>
+            <p class="telephone">${this.user.telephone}</p>
           </figcaption>
         </figure>
       </div>
@@ -46,7 +46,7 @@ export default class UserCard {
               <div>
                 <figure class="profile-pic-container ${this.user.departmentName
                   .toLowerCase()
-                  .split(" ", 2)[0] + "-team"}">
+                  .split(' ', 2)[0] + '-team'}">
                   <img src="img/${this.user.firstName}_${this.user
       .lastName}_profile.jpg" alt="${this.user.fullName}" class="profile-pic">
                 </figure>
@@ -118,7 +118,7 @@ export default class UserCard {
       <header role="banner" class="profile-edit-header">
         <figure class="profile-pic-container ${this.user.departmentName
           .toLowerCase()
-          .split(" ", 2)[0] + "-team"}">
+          .split(' ', 2)[0] + '-team'}">
           <img src="img/${this.user.firstName}_${this.user
       .lastName}_profile.jpg" alt="${this.user.firstName} ${this.user
       .lastName}" class="profile-pic">
@@ -235,10 +235,10 @@ export default class UserCard {
   }
 
   verifyUserData(obj) {
-    var result = "";
+    var result = '';
     for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
-        result += key + " : " + obj[key] + "\n";
+        result += key + ' : ' + obj[key] + '\n';
       }
     }
     console.log(result);

@@ -1,10 +1,25 @@
 import $ from 'jquery';
+import Cookies from 'js-cookie';
+
 import UserCard from './userCard';
 import DepartmentOptions from './departmentOptions';
 import './menu';
 
 function getAllUsers() {
-  $.get('/user').then(showAllUsers);
+  $.ajax({
+    url: '/user',
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${Cookies.get('jwt')}`
+    },
+    dataType: 'json'
+  })
+    .then(showAllUsers)
+    .catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
+      }
+    });
 }
 
 function showAllUsers(data) {
@@ -21,7 +36,20 @@ function showAllUsers(data) {
 }
 
 function getSingleUser(userId) {
-  $.get(`/user/${userId}`).then(showSingleUser);
+  $.ajax({
+    url: `/user/${userId}`,
+    method: 'GET',
+    dataType: 'json',
+    headers: {
+      Authorization: `Bearer ${Cookies.get('jwt')}`
+    }
+  })
+    .then(showSingleUser)
+    .catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
+      }
+    });
 }
 
 function showSingleUser(data) {
@@ -31,7 +59,20 @@ function showSingleUser(data) {
 }
 
 function getSingleUserEdit(userId) {
-  return $.get(`/user/${userId}`).then(showSingleUserEdit);
+  return $.ajax({
+    url: `/user/${userId}`,
+    method: 'GET',
+    dataType: 'json',
+    headers: {
+      Authorization: `Bearer ${Cookies.get('jwt')}`
+    }
+  })
+    .then(showSingleUserEdit)
+    .catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
+      }
+    });
 }
 
 function showSingleUserEdit(data) {
@@ -40,9 +81,22 @@ function showSingleUserEdit(data) {
 }
 
 function getAllDepartments(selectDepartmentId) {
-  $.get('/department').then(data => {
-    showDepartmentOptions(data, selectDepartmentId);
-  });
+  $.ajax({
+    url: '/department',
+    method: 'GET',
+    dataType: 'json',
+    headers: {
+      Authorization: `Bearer ${Cookies.get('jwt')}`
+    }
+  })
+    .then(data => {
+      showDepartmentOptions(data, selectDepartmentId);
+    })
+    .catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
+      }
+    });
 }
 
 function showDepartmentOptions(data, selectDepartmentId) {
@@ -63,9 +117,22 @@ function showDepartmentOptions(data, selectDepartmentId) {
 }
 
 function getAllDepartmentsIndexMenu() {
-  $.get('/department').then(data => {
-    showDepartmentOptionsIndexMenu(data);
-  });
+  $.ajax({
+    url: '/department',
+    method: 'GET',
+    dataType: 'json',
+    headers: {
+      Authorization: `Bearer ${Cookies.get('jwt')}`
+    }
+  })
+    .then(data => {
+      showDepartmentOptionsIndexMenu(data);
+    })
+    .catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
+      }
+    });
 }
 
 function showDepartmentOptionsIndexMenu(data) {
@@ -419,6 +486,9 @@ function captureUserSubmission() {
     $.ajax({
       url: '/user/',
       type: 'POST',
+      headers: {
+        Authorization: `Bearer ${Cookies.get('jwt')}`
+      },
       data: $('#profile-form').serialize(),
       success: function(json) {
         console.log('data recieved');
@@ -426,6 +496,10 @@ function captureUserSubmission() {
       },
       error: function() {
         showSubmitError();
+      }
+    }).catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
       }
     });
   });
@@ -460,6 +534,9 @@ function captureUserEdit(userId) {
     $.ajax({
       url: `/user/${userId}`,
       type: 'PUT',
+      headers: {
+        Authorization: `Bearer ${Cookies.get('jwt')}`
+      },
       data: $('#profile-form').serialize(),
       success: function() {
         console.log('User profile updated');
@@ -467,6 +544,10 @@ function captureUserEdit(userId) {
       },
       error: function() {
         showSubmitError();
+      }
+    }).catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
       }
     });
   });
@@ -479,6 +560,9 @@ function captureDepartmentSubmission() {
     $.ajax({
       url: '/department/',
       type: 'POST',
+      headers: {
+        Authorization: `Bearer ${Cookies.get('jwt')}`
+      },
       data: $('#profile-form').serialize(),
       success: function() {
         console.log('department created');
@@ -487,12 +571,29 @@ function captureDepartmentSubmission() {
       error: function() {
         showSubmitError();
       }
+    }).catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
+      }
     });
   });
 }
 
 function showUsersForDeletion() {
-  $.get('/user').then(showUserList);
+  $.ajax({
+    url: '/user',
+    method: 'GET',
+    dataType: 'json',
+    headers: {
+      Authorization: `Bearer ${Cookies.get('jwt')}`
+    }
+  })
+    .then(showUserList)
+    .catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
+      }
+    });
 }
 
 function showUserList(data) {
@@ -514,12 +615,19 @@ function captureUserForDelete() {
     $.ajax({
       url: `/user/${userId}`,
       type: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${Cookies.get('jwt')}`
+      },
       data: $('#profile-form').serialize(),
       success: function() {
         showUserDeleteSubmitSuccess();
       },
       error: function() {
         showSubmitError();
+      }
+    }).catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
       }
     });
   });
@@ -550,12 +658,19 @@ function captureDepartmentForDeletion() {
     $.ajax({
       url: `/department/${departmentId}`,
       type: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${Cookies.get('jwt')}`
+      },
       data: $('#profile-form').serialize(),
       success: function() {
         showDepartmentForDeletionSubmitSuccess();
       },
       error: function() {
         showSubmitError();
+      }
+    }).catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
       }
     });
   });
@@ -600,6 +715,9 @@ function searchMenu() {
     $.ajax({
       url: `/user/search/${searchTerm}`,
       type: 'GET',
+      headers: {
+        Authorization: `Bearer ${Cookies.get('jwt')}`
+      },
       data: $('#profile-form').serialize(),
       success: function(json) {
         console.log('data recieved');
@@ -608,6 +726,10 @@ function searchMenu() {
       error: function() {
         // showSubmitError();
         console.log('error');
+      }
+    }).catch(err => {
+      if (err.status === 401) {
+        window.location = '/login.html';
       }
     });
   });
@@ -631,19 +753,39 @@ function captureUserlogin() {
       type: 'POST',
       data: $('.user-login').serialize(),
       success: function(json) {
+        Cookies.set('jwt', json.authToken);
+        Cookies.set('loggedInUserId', json.userId);
+        Cookies.set('permission', json.permission);
         console.log('data recieved');
         window.location = 'index.html';
       },
       error: function() {
-        // showSubmitError();
         console.log('error');
       }
     });
   });
 }
 
-export { getAllDepartments, renderStates, renderCountries };
+function permissionCheck() {
+  let permission = Cookies.get('permission');
+  if (permission == 1) {
+    $('.permission--js').toggleClass('hidden');
+  }
+}
 
+function renderProfileMenuButton() {
+  let userId = Cookies.get('loggedInUserId');
+  console.log(userId);
+  let container = $('.profile-menu--edit');
+  $(container).append(`
+      <a href="profile-edit.html?id=${userId}">
+        <i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
+        edit user profile
+      </a>
+    `);
+}
+
+export { getAllDepartments, renderStates, renderCountries };
 (function(window) {
   const entryPoints = {};
 
@@ -651,6 +793,8 @@ export { getAllDepartments, renderStates, renderCountries };
     getAllUsers();
     getAllDepartmentsIndexMenu();
     searchMenu();
+    permissionCheck();
+    renderProfileMenuButton();
   };
 
   entryPoints.runProfile = () => {

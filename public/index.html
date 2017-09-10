@@ -29,28 +29,53 @@
             update user profile
           </a>
         </section> -->
-        <section class="profile-menu">
+        <section class="profile-menu profile-menu--create permission--js hidden">
+          <a href="department-create.html">
+            <i class="fa fa-building fa-2x" aria-hidden="true"></i>
+            create department
+          </a>
+        </section>
+        <section class="profile-menu profile-menu--delete permission--js hidden">
+          <a href="department-delete.html">
+            <i class="fa fa-building-o fa-2x" aria-hidden="true"></i>
+            delete department
+          </a>
+        </section>
+        <section class="profile-menu profile-menu--create permission--js hidden">
           <a href="profile-create.html">
-            <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+            <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
             create user profile
           </a>
         </section>
-        <section class="search-by-email-menu">
-          <label for="searchEmail">search by email</label>
-          <input type="email" id="searchEmail" name="searchEmail" value="" aria-describedby="email-format" class="search-bar">
-          <span id="email-format" class="help">Format: jdoe@email.com</span>
-        </section>
-        <section class="search-by-name-menu">
-          <label for="searchName">search by name</label>
-          <input type="name" id="searchName" name="searchName" value="" aria-describedby="name-format" class="search-bar">
-          <span id="name-format" class="help">Format: John Doe</span>
-        </section>
-        <section class="search-by-name-menu">
-          <label for="departmentId">search by department</label>
-          <select id="departmentId" name="departmentId">
+        <section class="profile-menu profile-menu--edit">
 
-          </select>
         </section>
+        <section class="profile-menu profile-menu--delete permission--js hidden">
+          <a href="user-delete.html">
+            <i class="fa fa-user-times fa-2x" aria-hidden="true"></i>
+            delete user profile
+          </a>
+        </section>
+        <div class="profile-menu">
+          <section class="search-by-email-menu">
+            <label for="searchEmail">search by email</label>
+            <input type="email" id="searchEmail" name="searchEmail" value="" aria-describedby="email-format" class="search-bar">
+            <span id="email-format" class="help">Format: jdoe@email.com</span>
+          </section>
+        </div>
+        <div class="profile-menu">
+          <section class="search-by-name-menu">
+            <label for="searchName">search by name</label>
+            <input type="name" id="searchName" name="searchName" value="" aria-describedby="name-format" class="search-bar">
+            <span id="name-format" class="help">Format: John Doe</span>
+          </section>
+        </div>
+        <div class="profile-menu">
+          <section class="search-by-name-menu">
+            <label for="departmentId">search by department</label>
+            <select id="departmentId" name="departmentId"></select>
+          </section>
+        </div>
         <section class="search-menu-buttons">
           <button type="submit" class="search" id="searchMenuSubmit" name="searchMenuSubmit">submit</button>
           <button class="reset-button" id="reset-button" name="reset-button">reset</button>
@@ -58,9 +83,6 @@
       </fieldset>
     </form>
   </nav>
-  <!-- <p class="applied-filter-list">
-    display all
-  </p> -->
   <section id="c-mask" class="c-mask"></section>
   <div class="wrapper0 o-wrapper" id="o-wrapper">
     <div class="menu-button-container">

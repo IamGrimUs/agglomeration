@@ -26,24 +26,30 @@ router.post('/login', (req, res) => {
   User.findOne({ email: userEmail })
     .then(user => {
       if (!user) {
-        // Return a rejected promise so we break out of the chain of .thens.
-        // Any errors like this will be handled in the catch block.
         return Promise.reject({
           reason: 'LoginError',
-          message: 'Incorrect email or password 1'
+          message: 'Incorrect email or password'
         });
       }
-      return user.validatePassword(userPassword);
+      return {
+        user,
+        isValid: user.validatePassword(userPassword)
+      };
     })
-    .then(isValid => {
-      if (!isValid) {
+    .then(result => {
+      if (!result.isValid) {
         return Promise.reject({
           reason: 'LoginError',
-          message: 'Incorrect email or password 2'
+          message: 'Incorrect email or password'
         });
       }
-      const authToken = createAuthToken(req.user.toClient());
-      res.status(200).json({ authToken });
+      const authToken = createAuthToken(result.user.toClient());
+      res.status(200).json({
+        meta: 'success',
+        userId: result.user._id,
+        permission: result.user.permission,
+        authToken
+      });
     })
     .catch(err => {
       if (err.reason === 'LoginError') {

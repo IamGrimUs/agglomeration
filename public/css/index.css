@@ -225,14 +225,11 @@ img {
 .search-by-email-menu label,
 .search-by-name-menu label {
   font-weight: 700;
-  color: #000000;
+  color: #333;
   font-family: 'Open Sans', sans-serif;
   padding: 0;
-  margin-top: 1em;
 }
 
-.search-by-email-menu,
-.search-by-name-menu,
 .search-menu-buttons {
   padding: 0 1em;
 }
@@ -246,8 +243,7 @@ img {
 .search-by-name-menu select {
   height: 60px;
   width: 100%;
-  font-size: 1em;
-  margin-bottom: 2em;
+  font-size: 0.9em;
 }
 
 .search,
@@ -260,6 +256,7 @@ img {
   border: none;
   border-bottom: 4px solid #77923d;
   border-radius: 0.25em;
+  transition: all 0.25s;
 }
 
 .search {
@@ -279,6 +276,7 @@ img {
 .reset-button:hover {
   background-color: #cf2347;
   border-bottom: 4px solid #333;
+  transition: all 0.25s;
 }
 
 /**
@@ -333,7 +331,7 @@ body.has-active-menu {
 .c-menu label {
   display: inline-block;
   width: 100%;
-  padding: 1em 0;
+  padding: 0.25em 0;
   font-family: 'Raleway', sans-serif;
   letter-spacing: 0.5px;
 }
@@ -673,6 +671,7 @@ figure.strategy-team {
   line-height: 1.25;
   cursor: pointer;
   transition: all 0.5s ease;
+  border-radius: 0.25em;
 }
 
 .profile-card .profile-card-header p {
@@ -694,7 +693,6 @@ figure.strategy-team {
 .profile-card figure figcaption {
   display: block;
   position: absolute;
-  z-index: 5;
 }
 
 .profile-card figure figcaption {
@@ -704,9 +702,9 @@ figure.strategy-team {
   height: 100%;
   text-align: center;
   backface-visibility: hidden;
-  -webkit-transform: rotateY(-180deg);
-  -moz-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
+  /* -webkit-transform: translateY(-2em);
+  -moz-transform: translateY(-2em);
+  transform: translateY(-2em); */
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
@@ -721,12 +719,12 @@ figure.strategy-team {
 
 .profile-card figure:hover img,
 figure.hover img {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  transform: rotateY(180deg);
+  -webkit-transform: translateY(10em);
+  -moz-transform: translateY(10em);
+  transform: translateY(10em);
 }
 
-.profile-card figure:hover figcaption,
+/* .profile-card figure:hover figcaption,
 figure.hover figcaption {
   -webkit-transform: rotateY(0);
   -moz-transform: rotateY(0);
@@ -734,15 +732,14 @@ figure.hover figcaption {
   background-color: #f3f3f3;
   border-right: 1px solid #bfbfbf;
   border-left: 1px solid #bfbfbf;
-}
+} */
 
 .profile-card div,
 .profile-card figcaption {
-  padding: 1em 0.75em 1em 0.75em;
+  padding: 1em 0.75em;
 }
-
 .profile-card figcaption {
-  margin-top: 1.5em;
+  padding: 0 0.75em;
 }
 
 .profile-card figcaption a {
@@ -756,19 +753,17 @@ figure.hover figcaption {
   text-align: left;
 }
 
-.profile-card p,
-.profile-card a {
-  color: #333;
-  font-family: 'Raleway', sans-serif;
+.profile-card p {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1em;
-  margin-top: 0.5em;
   text-align: left;
+  line-height: 2em;
 }
 
-.profile-card a:hover {
-  color: #77923d;
+.telephone {
+  font-family: 'Open Sans', sans-serif;
 }
-
 .profile-card h2 {
   font-size: 1.5em;
   color: #fff;
@@ -785,11 +780,14 @@ figure.hover figcaption {
 } */
 
 .profile-menu {
-  color: #fff;
-  background-color: #333;
-  margin: 1em 0.5em;
-  padding: 1em;
+  color: #333;
+  background-color: #d1d1d1;
+  margin: 1.25em 0.5em;
+  padding: 0.5em 1em;
   border-radius: 0.25em;
+  border: 3px solid #ccc;
+  transition: all 0.5s;
+  font-size: 1.2em;
 }
 .profile-menu i {
   padding-right: 0.5em;
@@ -797,9 +795,39 @@ figure.hover figcaption {
 .profile-menu a {
   color: #ffffff;
   text-decoration: none;
+  display: inline-block;
+  width: 100%;
 }
-.profile-menu a:hover {
-  color: #77923d;
+
+.profile-menu--delete {
+  border: 3px solid #cf2347;
+  background-color: #333;
+}
+.profile-menu--delete:hover {
+  background-color: #cf2347;
+  border: 3px solid #333;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.profile-menu--create {
+  border: 3px solid #77923d;
+  background-color: #333;
+}
+.profile-menu--create:hover {
+  background-color: #77923d;
+  border: 3px solid #333;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.profile-menu--edit {
+  border: 3px solid #31839a;
+  background-color: #333;
+}
+.profile-menu--edit:hover {
+  background-color: #31839a;
+  border: 3px solid #333;
+  cursor: pointer;
+  transition: all 0.25s;
 }
 /* -----------------------------------------------------------------------------
 
@@ -1102,6 +1130,7 @@ select {
 .profile-submit:hover {
   border: 2px solid #333;
   background-color: #77923d;
+  transition: all 0.25s;
 }
 
 .successMessage,

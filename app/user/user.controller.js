@@ -1,8 +1,8 @@
 const userModel = require('./user.model');
 const findAllUsers = (req, res) => {
   userModel.hashPassword('password').then(userPass => {
-    console.log('userPass:');
-    console.log(userPass);
+    // console.log('userPass:');
+    // console.log(userPass);
   });
   userModel
     .find()
@@ -191,14 +191,14 @@ const createNewUser = (req, res) => {
       position: req.body.position,
       state: req.body.state,
       country: req.body.country,
-      favoritePartOfDay: req.body.favoritePartofDay,
+      favoritePartOfDay: req.body.favoritePartOfDay,
       hobbies: req.body.hobbies,
       // permission: req.body.permission,
       password: req.body.password
     })
     .then(async userModel => res.status(201).json(await userModel.toClient()))
     .catch(err => {
-      console.error(err);
+      console.error('err is', err);
       res.status(500).json({ message: 'Internal server error' });
     });
 };
