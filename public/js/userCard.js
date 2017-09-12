@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Cookies from 'js-cookie';
 import { getAllDepartments } from './index';
 import { renderStates } from './index';
 import { renderCountries } from './index';
@@ -119,9 +120,10 @@ export default class UserCard {
         <figure class="profile-pic-container ${this.user.departmentName
           .toLowerCase()
           .split(' ', 2)[0] + '-team'}">
-          <img src="img/${this.user.firstName}_${this.user
-      .lastName}_profile.jpg" alt="${this.user.firstName} ${this.user
-      .lastName}" class="profile-pic">
+          <form action="/user/${this.user
+            .id}/photo" class="dropzone" id="my-awesome-dropzone">
+          </form>
+          <input type="file" name="profileImage" class="profile-pic-container no-team" />
         </figure>
         <h1 class="text-center profile-edit-headline">Please update your personal profile.</h1>
       </header>
@@ -241,15 +243,20 @@ export default class UserCard {
         result += key + ' : ' + obj[key] + '\n';
       }
     }
-    console.log(result);
   }
 
   renderUserLink(containerForAppending) {
-    $(containerForAppending).append(`
-      <a href="profile-edit.html?id=${this.user.id}">
-        <i class="fa fa-user fa-2x" aria-hidden="true" ></i>
-        edit ${this.user.firstName}'s profile
-      </a>
-    `);
+    let userId = Cookies.get('loggedInUserId');
+    console.log('userId: ', userId);
+    let thisUser = this.user.id;
+    console.log(thisUser);
+    if (userId === thisUser) {
+      $(containerForAppending).append(`
+        <a href="profile-edit.html?id=${this.user.id}">
+          <i class="fa fa-user-o fa-2x" aria-hidden="true" ></i>
+          edit ${this.user.firstName}'s profile
+        </a>
+      `);
+    }
   }
 }

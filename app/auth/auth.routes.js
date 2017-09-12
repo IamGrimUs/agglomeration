@@ -19,12 +19,10 @@ const createAuthToken = user => {
 };
 
 router.post('/login', (req, res) => {
-  console.log('test before createAuthToken');
   const userEmail = req.body.userEmail;
   const userPassword = req.body.userPassword;
-  console.log(userEmail, userPassword);
   User.findOne({ email: userEmail })
-    .then(user => {
+    .then(async user => {
       if (!user) {
         return Promise.reject({
           reason: 'LoginError',
@@ -33,10 +31,11 @@ router.post('/login', (req, res) => {
       }
       return {
         user,
-        isValid: user.validatePassword(userPassword)
+        isValid: await user.validatePassword(userPassword)
       };
     })
     .then(result => {
+      console.log(result);
       if (!result.isValid) {
         return Promise.reject({
           reason: 'LoginError',

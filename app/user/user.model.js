@@ -12,12 +12,12 @@ const userSchema = mongoose.Schema({
   departmentName: { type: String },
   position: { type: String, required: true },
   state: { type: String },
-  country: { type: String, required: true },
+  country: { type: String },
   favoritePartOfDay: { type: String },
   hobbies: { type: String },
   permission: { type: Number },
-  password: { type: String, required: true }
-  // salt: { type: String }
+  password: { type: String, required: true },
+  imageUrl: { type: String }
 });
 
 userSchema.virtual('fullName').get(function() {
@@ -26,6 +26,8 @@ userSchema.virtual('fullName').get(function() {
 
 userSchema.methods.toClient = async function() {
   let department = await getDepartment(this.departmentId);
+  //check for image url to be populated.
+
   return {
     id: this._id,
     fullName: this.fullName,
@@ -36,13 +38,12 @@ userSchema.methods.toClient = async function() {
     telephone: this.telephone,
     departmentId: this.departmentId,
     departmentName: department ? department.name : null,
-    // managerId: department ? department.managerId : null,
-    // managerName: department ? await getManagerName(department.managerId) : null,
     position: this.position,
     state: this.state,
     country: this.country,
     favoritePartOfDay: this.favoritePartOfDay,
-    hobbies: this.hobbies
+    hobbies: this.hobbies,
+    imageUrl: this.imageUrl || 'generic-profile.png'
   };
 };
 
@@ -61,11 +62,5 @@ async function getDepartment(id) {
   let department = await departmentModel.findById(id);
   return department;
 }
-
-// async function getManagerName(id) {
-//   if (!id) return;
-//   let manager = await user.findById(id);
-//   return manager.fullName;
-// }
 
 module.exports = user;

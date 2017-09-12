@@ -10,7 +10,7 @@
   <meta charset="utf-8">
 </head>
 
-<body>
+<body class="bg-image">
   <section class="site-title-container">
     <h1 class="site-title">Agglomeration</h1>
     <p>An app for connecting individules and quickly viewing small user details. Such as contact information or personal stories.</p>
@@ -26,6 +26,7 @@
         <input type="email" name="userEmail" id="user-email" class="user-email" value="" required aria-required=”true”>
         <label for="userPassword">Password (required):</label>
         <input type="password" name="userPassword" id="user-password" class="user-password" value="" required aria-required=”true”>
+        <p class="error-message"></p>
         <button type="submit" class="login-submit-button" id="login-submit-button" name="login-submit-button">submit</button>
       </fieldset>
     </form>

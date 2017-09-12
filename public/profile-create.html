@@ -19,9 +19,12 @@
       </div>
     </section>
     <header role="banner" class="profile-edit-header">
+
       <figure class="profile-pic-container no-team">
+        <input type="file" name="file" />
         <img src="http://via.placeholder.com/250x250?text=Add+Image" alt="" class="profile-pic">
       </figure>
+
     </header>
     <main role="main">
       <section class="profile-information">
@@ -58,8 +61,8 @@
                 <input type="text" id="position" name="position" value="" required aria-required=”true”>
               </div>
             </section>
-            <section class="flex-container">
-              <div>
+            <!--<section class="flex-container">
+               <div>
                 <label for="state">State:</label>
                 <select id="state" name="state">
                   <option value="" disabled="disabled" selected="selected">Please select a State</option>
@@ -115,8 +118,8 @@
                   <option value="WV">WV</option>
                   <option value="WY">WY</option>
                 </select>
-              </div>
-              <div>
+              </div> -->
+            <!-- <div>
                 <label for="country">Country (required):</label>
                 <select id="country" name="country" required aria-required=”true”>
                   <option value="" disabled="disabled" selected="selected">Please select a Country</option>
@@ -372,14 +375,14 @@
                   <option value="Zimbabwe">Zimbabwe</option>
                 </select>
               </div>
-            </section>
+            </section>-->
             <div>
               <label for="departmentId">Department (required):</label>
               <select id="departmentId" name="departmentId" required aria-required=”true”>
 
               </select>
             </div>
-            <div>
+            <!-- <div>
               <label for="biography">Introduce yourself (required):</label>
               <textarea id="biography" name="biography" value="" rows="5" cols="20" required aria-required=”true”></textarea>
             </div>
@@ -390,7 +393,7 @@
             <div>
               <label for="hobbies">Hobbies:</label>
               <textarea id="hobbies" name="hobbies" value="" rows="5" cols="20"></textarea>
-            </div>
+            </div> -->
             <div>
               <button name="profile-submit" type="submit" value="" id="profile-submit" class="profile-submit">Submit</button>
             </div>

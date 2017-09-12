@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import Cookies from 'js-cookie';
+import { setupDropZone } from './dropzone.service';
 
 import UserCard from './userCard';
 import DepartmentOptions from './departmentOptions';
@@ -745,8 +746,6 @@ function searchReset() {
 
 function captureUserlogin() {
   $('.user-login').on('submit', function(e) {
-    console.log('user email is: ', $('.user-email').val());
-    console.log('user password is: ', $('.user-password').val());
     e.preventDefault();
     $.ajax({
       url: '/auth/login',
@@ -756,14 +755,25 @@ function captureUserlogin() {
         Cookies.set('jwt', json.authToken);
         Cookies.set('loggedInUserId', json.userId);
         Cookies.set('permission', json.permission);
-        console.log('data recieved');
         window.location = 'index.html';
       },
-      error: function() {
-        console.log('error');
+      error: function(json) {
+        let errorMessage = json.responseJSON.message;
+        showLoginErrorMessage(errorMessage);
       }
     });
   });
+}
+
+function showLoginErrorMessage(errorMessage) {
+  $('.error-message')
+    .html('')
+    .removeClass('hidden').append(`
+      <p>${errorMessage} Please check your entries and try again.</p>
+    `);
+  setTimeout(() => {
+    $('.error-message').addClass('hidden');
+  }, 5000);
 }
 
 function permissionCheck() {
@@ -786,6 +796,7 @@ function renderProfileMenuButton() {
 }
 
 export { getAllDepartments, renderStates, renderCountries };
+
 (function(window) {
   const entryPoints = {};
 
@@ -820,6 +831,7 @@ export { getAllDepartments, renderStates, renderCountries };
     getSingleUserEdit(queries['id']).then(() => {
       captureUserEdit(queries['id']);
     });
+    setupDropZone(queries['id']);
   };
 
   entryPoints.runProfileDelete = () => {

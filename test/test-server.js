@@ -1,17 +1,28 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const faker = require('faker');
+
 const mongoose = require('mongoose');
 
 const should = chai.should();
+const jwt = require('jsonwebtoken');
 
 const server = require('../server');
 const { runServer, closeServer } = require('../server');
 const Department = require('../app/department/department.model');
 const User = require('../app/user/user.model');
 const { TEST_DATABASE_URL } = require('../config');
+const config = require('../config');
 
 const app = server.app;
+
+const createAuthToken = user => {
+  return jwt.sign({ user }, config.JWT_SECRET, {
+    subject: user.username,
+    expiresIn: config.JWT_EXPIRY,
+    algorithm: 'HS256'
+  });
+};
 
 chai.use(chaiHttp);
 
@@ -40,7 +51,6 @@ describe('index page display', function() {
 
 // used to generate data for db
 function seedUserData() {
-  console.info('seeding user data');
   const seedData = [];
 
   for (let i = 1; i <= 10; i++) {
@@ -81,7 +91,6 @@ function userDepartment(name, id) {
 }
 
 function seedDepartmentData() {
-  console.info('seeding department data');
   const seedData = [];
 
   for (let i = 1; i <= 7; i++) {
@@ -105,19 +114,29 @@ function generateDepartmentName() {
 
   return departmentName;
 }
-
 // used to delete the entire database.
 function tearDownDb() {
   console.warn('Deleting database');
   return mongoose.connection.dropDatabase();
 }
 
+function userLogin() {
+  console.info('Hello world');
+}
+
 describe('User API resource', function() {
+  let mockUser;
+  let mockJwt;
   before(function() {
     return runServer(TEST_DATABASE_URL);
   });
 
-  beforeEach(function() {
+  beforeEach(async function() {
+    let users = await seedUserData();
+    mockUser = users[0];
+    mockJwt = createAuthToken(users[0]);
+    // console.log(mockUser);
+    // console.log(mockJwt);
     return seedUserData();
   });
 
@@ -144,6 +163,7 @@ describe('User API resource', function() {
       return chai
         .request(app)
         .get('/user')
+        .set('Authorization', `Bearer ${mockJwt}`)
         .then(function(_res) {
           // so subsequent .then blocks can access resp obj.
           res = _res;
@@ -164,6 +184,7 @@ describe('User API resource', function() {
       return chai
         .request(app)
         .get('/user')
+        .set('Authorization', `Bearer ${mockJwt}`)
         .then(function(res) {
           res.should.have.status(200);
           res.should.be.json;
@@ -219,6 +240,7 @@ describe('User API resource', function() {
       return chai
         .request(app)
         .get('/department')
+        .set('Authorization', `Bearer ${mockJwt}`)
         .then(function(_res) {
           // so subsequent .then blocks can access resp obj.
           res = _res;
@@ -239,6 +261,7 @@ describe('User API resource', function() {
       return chai
         .request(app)
         .get('/department')
+        .set('Authorization', `Bearer ${mockJwt}`)
         .then(function(res) {
           res.should.have.status(200);
           res.should.be.json;
@@ -265,10 +288,10 @@ describe('User API resource', function() {
     // the data was inserted into db)
     it('should add a new user', function() {
       const newUser = generateUserData();
-      console.log(newUser);
       return chai
         .request(app)
         .post('/user/')
+        .set('Authorization', `Bearer ${mockJwt}`)
         .send(newUser)
         .then(function(res) {
           res.should.have.status(201);
@@ -339,6 +362,7 @@ describe('User API resource', function() {
           return chai
             .request(app)
             .put(`/user/${user.id}`)
+            .set('Authorization', `Bearer ${mockJwt}`)
             .send(updateData);
         })
         .then(function(res) {
@@ -365,7 +389,10 @@ describe('User API resource', function() {
       return User.findOne()
         .then(function(_user) {
           user = _user;
-          return chai.request(app).delete(`/user/${user.id}`);
+          return chai
+            .request(app)
+            .delete(`/user/${user.id}`)
+            .set('Authorization', `Bearer ${mockJwt}`);
         })
         .then(function(res) {
           res.should.have.status(204);
