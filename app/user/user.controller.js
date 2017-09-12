@@ -136,8 +136,13 @@ const deleteUserById = (req, res) => {
 };
 
 const uploadUserPhoto = (req, res) => {
-  console.log('hello');
-  console.log('hello', req.file.filename);
+  console.log(req);
+  console.log(req.file.filename);
+  const toUpdate = { image: req.params.image };
+  userModel
+    .findByIdAndUpdate(req.params.userId, { $set: toUpdate })
+    .then(userModel => res.status(204).end())
+    .catch(err => res.status(500).json({ message: 'Internal server error' }));
 };
 
 module.exports = {

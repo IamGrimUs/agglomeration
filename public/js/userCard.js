@@ -48,8 +48,8 @@ export default class UserCard {
                 <figure class="profile-pic-container ${this.user.departmentName
                   .toLowerCase()
                   .split(' ', 2)[0] + '-team'}">
-                  <img src="img/${this.user.firstName}_${this.user
-      .lastName}_profile.jpg" alt="${this.user.fullName}" class="profile-pic">
+                  <img src="img/profile/${this.user.imageUrl}" alt="${this.user
+      .fullName}" class="profile-pic">
                 </figure>
               </div>
               <div>
@@ -116,17 +116,6 @@ export default class UserCard {
   renderUserProfileEdit(containerForAppending) {
     this.verifyUserData(this.user);
     $(containerForAppending).append(`
-      <header role="banner" class="profile-edit-header">
-        <figure class="profile-pic-container ${this.user.departmentName
-          .toLowerCase()
-          .split(' ', 2)[0] + '-team'}">
-          <form action="/user/${this.user
-            .id}/photo" class="dropzone" id="my-awesome-dropzone">
-          </form>
-          <input type="file" name="profileImage" class="profile-pic-container no-team" />
-        </figure>
-        <h1 class="text-center profile-edit-headline">Please update your personal profile.</h1>
-      </header>
       <main role="main" class="profile-edit-main">
         <section class="profile-information">
           <form class="profile-edit-form text-left" action="" method="put" id="profile-form">
@@ -243,6 +232,7 @@ export default class UserCard {
         result += key + ' : ' + obj[key] + '\n';
       }
     }
+    console.log(result);
   }
 
   renderUserLink(containerForAppending) {

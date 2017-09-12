@@ -35,18 +35,19 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   userController.findUserById
 );
+router
+  .all(upload.single('profileImage'))
+  .post(
+    '/user/:userId/photo',
+    passport.authenticate('jwt', { session: false }),
+    userController.uploadUserPhoto
+  );
 router.post(
   '/',
   passport.authenticate('jwt', { session: false }),
   userController.createNewUser
 );
-router
-  .all(upload.single('profileImage'))
-  .post(
-    '/:userId/photo',
-    passport.authenticate('jwt', { session: false }),
-    userController.uploadUserPhoto
-  );
+
 router.put(
   '/:userId',
   passport.authenticate('jwt', { session: false }),

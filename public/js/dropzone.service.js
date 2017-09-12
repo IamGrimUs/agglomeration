@@ -13,11 +13,12 @@ export function setupDropZone(userId) {
       if (file.name == 'justinbieber.jpg') {
         done("Naha, you don't.");
       } else {
+        console.log('success the image is up');
         done();
       }
     },
     acceptedFiles: 'image/*',
-    url: `user/${userId}/photo`,
+    url: `/users/${userId}/photo`,
     error: function() {
       console.log('there was an error');
     }
