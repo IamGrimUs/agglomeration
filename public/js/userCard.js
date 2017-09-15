@@ -27,8 +27,8 @@ export default class UserCard {
           <p>${this.user.departmentName}</p>
         </div>
         <figure>
-          <img src="img/${this.user.firstName}_${this.user
-      .lastName}.jpg" alt="${this.user.firstName} ${this.user.lastName}">
+          <img src="img/profile/${this.user.imageUrl}" alt="${this.user
+      .firstName} ${this.user.lastName}">
           <figcaption>
             <p>${this.user.position}</p>
             <p>${this.user.email}</p>
@@ -45,11 +45,10 @@ export default class UserCard {
           <section class="contact-information-layout">
             <div class="flex-container">
               <div>
-                <figure class="profile-pic-container ${this.user.departmentName
-                  .toLowerCase()
-                  .split(' ', 2)[0] + '-team'}">
-                  <img src="img/profile/${this.user.imageUrl}" alt="${this.user
-      .fullName}" class="profile-pic">
+                <figure style="background-image:url('img/profile/${this.user
+                  .imageUrl}');background-size:cover;background-position:center center" class="profile-pic-container ${this.user.departmentName
+      .toLowerCase()
+      .split(' ', 2)[0] + '-team'}">
                 </figure>
               </div>
               <div>
@@ -137,8 +136,7 @@ export default class UserCard {
                 </div>
                 <div>
                   <label for="password">Password:</label>
-                  <input type="password" id="password" name="password" value="${this
-                    .user.password}" title="password">
+                  <input type="password" id="password" name="password" value="" title="password">
                 </div>
                 <div>
                   <label for="email">Email:</label>
@@ -203,7 +201,7 @@ export default class UserCard {
   }
 
   renderUserProfileDelete(containerForAppending, userList) {
-    console.log(userList);
+    //console.log(userList);
 
     function SortByName(a, b) {
       var aName = a.fullName.toLowerCase();
@@ -232,14 +230,12 @@ export default class UserCard {
         result += key + ' : ' + obj[key] + '\n';
       }
     }
-    console.log(result);
+    //console.log(result);
   }
 
   renderUserLink(containerForAppending) {
     let userId = Cookies.get('loggedInUserId');
-    console.log('userId: ', userId);
     let thisUser = this.user.id;
-    console.log(thisUser);
     if (userId === thisUser) {
       $(containerForAppending).append(`
         <a href="profile-edit.html?id=${this.user.id}">

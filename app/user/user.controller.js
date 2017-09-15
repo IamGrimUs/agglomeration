@@ -90,7 +90,7 @@ const createNewUser = (req, res) => {
 };
 
 const updateUserById = (req, res) => {
-  console.log('hello put request', req.params.userId);
+  console.log('hello put request', req.params.password);
   if (!(req.params.userId && req.body.userId === req.body.userId)) {
     const message =
       `Request path id (${req.params.userId}) and request body id ` +
@@ -111,8 +111,7 @@ const updateUserById = (req, res) => {
     'state',
     'country',
     'favoritePartOfDay',
-    'hobbies',
-    'password'
+    'hobbies'
   ];
 
   updateableFields.forEach(field => {
@@ -120,6 +119,13 @@ const updateUserById = (req, res) => {
       toUpdate[field] = req.body[field];
     }
   });
+  console.log('password:', req.body.password);
+  if (req.body.password) {
+    console.log('the password has been updated.');
+  }
+  //if req.body.password
+  //hash the password
+  // don't send password if there is no value
 
   userModel
     .findByIdAndUpdate(req.params.userId, { $set: toUpdate })
@@ -128,7 +134,7 @@ const updateUserById = (req, res) => {
 };
 
 const deleteUserById = (req, res) => {
-  console.log(`this is the requested params id: `, req.params.userId);
+  //(`this is the requested params id: `, req.params.userId);
   userModel
     .findByIdAndRemove({ _id: req.params.userId })
     .then(() => res.status(204).end())
@@ -136,9 +142,7 @@ const deleteUserById = (req, res) => {
 };
 
 const uploadUserPhoto = (req, res) => {
-  console.log(req);
-  console.log(req.file.filename);
-  const toUpdate = { image: req.params.image };
+  const toUpdate = { imageUrl: req.file.filename };
   userModel
     .findByIdAndUpdate(req.params.userId, { $set: toUpdate })
     .then(userModel => res.status(204).end())

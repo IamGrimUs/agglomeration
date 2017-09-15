@@ -507,7 +507,7 @@ function captureUserSubmission() {
 }
 
 function showSubmitSuccess(json) {
-  console.log(json);
+  //console.log(json);
   $('.successMessage').toggleClass('hidden');
   setTimeout(function() {
     window.location = `profile.html?id=${json.id}`;
@@ -515,7 +515,7 @@ function showSubmitSuccess(json) {
 }
 
 function showEditSubmitSuccess(userId) {
-  console.log(userId);
+  //console.log(userId);
   $('.successMessage').toggleClass('hidden');
   setTimeout(function() {
     window.location = `profile.html?id=${userId}`;
@@ -540,7 +540,7 @@ function captureUserEdit(userId) {
       },
       data: $('#profile-form').serialize(),
       success: function() {
-        console.log('User profile updated');
+        //console.log('User profile updated');
         showEditSubmitSuccess(userId);
       },
       error: function() {
@@ -612,7 +612,7 @@ function captureUserForDelete() {
     let userId = $(this)
       .find('[name=userId]')
       .val();
-    console.log(userId);
+    //console.log(userId);
     $.ajax({
       url: `/user/${userId}`,
       type: 'DELETE',
@@ -655,7 +655,7 @@ function captureDepartmentForDeletion() {
     let departmentId = $(this)
       .find('[name=departmentId]')
       .val();
-    console.log(departmentId);
+    //console.log(departmentId);
     $.ajax({
       url: `/department/${departmentId}`,
       type: 'DELETE',
@@ -712,7 +712,7 @@ function searchMenu() {
     $('#searchEmail').val('');
     $('#searchName').val('');
     $('#departmentId').val('');
-    console.log(searchTerm);
+    //console.log(searchTerm);
     $.ajax({
       url: `/user/search/${searchTerm}`,
       type: 'GET',
@@ -740,7 +740,7 @@ function searchMenu() {
 function searchReset() {
   $('#reset-button').click(() => {
     getAllUsers();
-    console.log('hello');
+    //console.log('hello');
   });
 }
 
@@ -785,7 +785,7 @@ function permissionCheck() {
 
 function renderProfileMenuButton() {
   let userId = Cookies.get('loggedInUserId');
-  console.log(userId);
+  //(userId);
   let container = $('.profile-menu--edit');
   $(container).append(`
       <a href="profile-edit.html?id=${userId}">

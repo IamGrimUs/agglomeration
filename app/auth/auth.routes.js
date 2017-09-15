@@ -35,7 +35,7 @@ router.post('/login', (req, res) => {
       };
     })
     .then(result => {
-      console.log(result);
+      //console.log(result);
       if (!result.isValid) {
         return Promise.reject({
           reason: 'LoginError',

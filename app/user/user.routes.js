@@ -36,9 +36,9 @@ router.get(
   userController.findUserById
 );
 router
+  .route('/:userId/photo')
   .all(upload.single('profileImage'))
   .post(
-    '/user/:userId/photo',
     passport.authenticate('jwt', { session: false }),
     userController.uploadUserPhoto
   );

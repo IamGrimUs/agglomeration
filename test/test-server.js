@@ -135,8 +135,6 @@ describe('User API resource', function() {
     let users = await seedUserData();
     mockUser = users[0];
     mockJwt = createAuthToken(users[0]);
-    // console.log(mockUser);
-    // console.log(mockJwt);
     return seedUserData();
   });
 

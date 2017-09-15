@@ -1,4 +1,4 @@
-const departmentModel = require("./department.model");
+const departmentModel = require('./department.model');
 
 const findAllDepartments = (req, res) => {
   departmentModel
@@ -10,7 +10,7 @@ const findAllDepartments = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ message: "Internal server error" });
+      res.status(500).json({ message: 'Internal server error' });
     });
 };
 
@@ -23,12 +23,12 @@ const findDepartmentById = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ message: "Internal server error" });
+      res.status(500).json({ message: 'Internal server error' });
     });
 };
 
 const createNewDepartment = (req, res) => {
-  console.log(`hello`, req.body);
+  //console.log(`hello`, req.body);
   departmentModel
     .create({
       name: req.body.name,
@@ -37,12 +37,12 @@ const createNewDepartment = (req, res) => {
     .then(departmentModel => res.status(201).json(departmentModel.toClient()))
     .catch(err => {
       console.error(err);
-      res.status(500).json({ message: "Internal server error" });
+      res.status(500).json({ message: 'Internal server error' });
     });
 };
 
 const updateDepartmentById = (req, res) => {
-  console.log("hello put request", req.params.departmentId);
+  //console.log("hello put request", req.params.departmentId);
   if (
     !(
       req.params.departmentId && req.body.departmentId === req.body.departmentId
@@ -56,7 +56,7 @@ const updateDepartmentById = (req, res) => {
   }
 
   const toUpdate = {};
-  const updateableFields = ["name", "managerId", "directorId", "vpId"];
+  const updateableFields = ['name', 'managerId', 'directorId', 'vpId'];
 
   updateableFields.forEach(field => {
     if (field in req.body) {
@@ -67,15 +67,15 @@ const updateDepartmentById = (req, res) => {
   departmentModel
     .findByIdAndUpdate(req.params.departmentId, { $set: toUpdate })
     .then(departmentModel => res.status(204).end())
-    .catch(err => res.status(500).json({ message: "Internal server error" }));
+    .catch(err => res.status(500).json({ message: 'Internal server error' }));
 };
 
 const deleteDepartmentById = (req, res) => {
-  console.log(`this is the requested params id: `, req.params.departmentId);
+  //(`this is the requested params id: `, req.params.departmentId);
   departmentModel
     .findByIdAndRemove({ _id: req.params.departmentId })
     .then(() => res.status(204).end())
-    .catch(err => res.status(500).json({ message: "Interanl server error" }));
+    .catch(err => res.status(500).json({ message: 'Interanl server error' }));
 };
 
 module.exports = {
