@@ -36,19 +36,19 @@ const searchUser = (req, res) => {
   const lastName = req.query.lastName;
 
   if (departmentId) {
-    query.departmentId = departmentId;
+    query.departmentId = { $regex: departmentId, $options: 'i' };
   }
 
   if (email) {
-    query.email = email;
+    query.email = { $regex: email, $options: 'i' };
   }
 
   if (firstName) {
-    query.firstName = firstName;
+    query.firstName = { $regex: firstName, $options: 'i' };
   }
 
   if (lastName) {
-    query.lastName = lastName;
+    query.lastName = { $regex: lastName, $options: 'i' };
   }
 
   userModel
@@ -89,8 +89,7 @@ const createNewUser = (req, res) => {
     });
 };
 
-const updateUserById = (req, res) => {
-  console.log('hello put request', req.params.password);
+const updateUserById = async (req, res) => {
   if (!(req.params.userId && req.body.userId === req.body.userId)) {
     const message =
       `Request path id (${req.params.userId}) and request body id ` +
@@ -121,14 +120,20 @@ const updateUserById = (req, res) => {
   });
   console.log('password:', req.body.password);
   if (req.body.password) {
-    console.log('the password has been updated.');
+    let pass = { password: await userModel.hashPassword(req.body.password) };
+    console.log(pass);
+    userModel
+      .findByIdAndUpdate(req.params.userId, { $set: pass })
+      .then(user => {
+        console.log(user);
+      });
   }
-  //if req.body.password
-  //hash the password
-  // don't send password if there is no value
 
   userModel
     .findByIdAndUpdate(req.params.userId, { $set: toUpdate })
+    .then(user => {
+      console.log(user);
+    })
     .then(userModel => res.status(204).end())
     .catch(err => res.status(500).json({ message: 'Internal server error' }));
 };

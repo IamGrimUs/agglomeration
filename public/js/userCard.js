@@ -40,21 +40,41 @@ export default class UserCard {
   }
 
   renderSingleUserProfile(containerForAppending) {
-    $(containerForAppending).append(`
+    let biography;
+    let hobbies;
+    let favoritePartOfDay;
+    let state;
+    if (!this.user.biography) {
+      biography = 'awaiting user input...';
+    } else {
+      biography = this.user.biography;
+    }
+    if (!this.user.hobbies) {
+      hobbies = 'awaiting user input...';
+    } else {
+      hobbies = this.user.hobbies;
+    }
+    if (!this.user.favoritePartOfDay) {
+      favoritePartOfDay = 'awaiting user input...';
+    } else {
+      favoritePartOfDay = this.user.favoritePartOfDay;
+    }
+    if (this.user.state == 'Not applicable') {
+      $(containerForAppending).append(`
       <section class="profile-information">
           <section class="contact-information-layout">
             <div class="flex-container">
               <div>
                 <figure style="background-image:url('img/profile/${this.user
                   .imageUrl}');background-size:cover;background-position:center center" class="profile-pic-container ${this.user.departmentName
-      .toLowerCase()
-      .split(' ', 2)[0] + '-team'}">
+        .toLowerCase()
+        .split(' ', 2)[0] + '-team'}">
                 </figure>
               </div>
               <div>
                 <h1 class="text-center">${this.user.firstName} ${this.user
-      .lastName}</h1>
-                <p class="text-center">${this.user.biography}</p>
+        .lastName}</h1>
+                <p class="text-center">${biography}</p>
               </div>
               <div>
                 <p>
@@ -68,10 +88,6 @@ export default class UserCard {
                   <a href="tel:${this.user.telephone}" class="telephone">
                     ${this.user.telephone}
                   </a>
-                </p>
-                <p>
-                  <span class="profile-category-headline">State:</span> ${this
-                    .user.state}
                 </p>
                 <p>
                   <span class="profile-category-headline">Country:</span> ${this
@@ -96,7 +112,83 @@ export default class UserCard {
                 Favorite part of the day:
               </span>
               <p>
-                ${this.user.favoritePartOfDay}
+                ${favoritePartOfDay}
+              </p>
+            </div>
+            <div class="personal-information ${this.user.hobbies
+              ? ''
+              : 'hidden'}">
+              <span class="profile-category-headline">
+                Hobbies:
+              </span>
+              <p>
+                ${hobbies}
+              </p>
+            </div>
+          </section>
+        </section>
+    `);
+    } else {
+      state = this.user.state;
+      $(containerForAppending).append(`
+      <section class="profile-information">
+          <section class="contact-information-layout">
+            <div class="flex-container">
+              <div>
+                <figure style="background-image:url('img/profile/${this.user
+                  .imageUrl}');background-size:cover;background-position:center center" class="profile-pic-container ${this.user.departmentName
+        .toLowerCase()
+        .split(' ', 2)[0] + '-team'}">
+                </figure>
+              </div>
+              <div>
+                <h1 class="text-center">${this.user.firstName} ${this.user
+        .lastName}</h1>
+                <p class="text-center">${biography}</p>
+              </div>
+              <div>
+                <p>
+                  <span class="profile-category-headline">Email address:</span>
+                  <a href="mailto:${this.user.email}" class="email-address">
+                  ${this.user.email}
+                  </a>
+                </p>
+                <p>
+                  <span class="profile-category-headline">Telephone:</span>
+                  <a href="tel:${this.user.telephone}" class="telephone">
+                    ${this.user.telephone}
+                  </a>
+                </p>
+                <p>
+                  <span class="profile-category-headline ${this.user.state ===
+                  'Not applicable'
+                    ? 'hidden'
+                    : ''}">State:</span> ${state}
+                </p>
+                <p>
+                  <span class="profile-category-headline">Country:</span> ${this
+                    .user.country}
+                </p>
+              </div>
+              <div>
+                <p>
+                  <span class="profile-category-headline">
+                    Department:
+                  </span> ${this.user.departmentName}
+                </p>
+                <p>
+                  <span class="profile-category-headline">
+                    Postition title:
+                  </span> ${this.user.position}
+                </p>
+              </div>
+            </div>
+            <div class="personal-information">
+              <span class="profile-category-headline">
+                Favorite part of the day:
+              </span>
+              <p>
+                ${favoritePartOfDay}
               </p>
             </div>
             <div class="personal-information">
@@ -104,12 +196,13 @@ export default class UserCard {
                 Hobbies:
               </span>
               <p>
-                ${this.user.hobbies}
+                ${hobbies}
               </p>
             </div>
           </section>
         </section>
     `);
+    }
   }
 
   renderUserProfileEdit(containerForAppending) {
@@ -135,7 +228,7 @@ export default class UserCard {
                   <span id="last-name-format" class="help">Format: Lastname</span>
                 </div>
                 <div>
-                  <label for="password">Password:</label>
+                  <label for="password">New Password:</label>
                   <input type="password" id="password" name="password" value="" title="password">
                 </div>
                 <div>
@@ -235,8 +328,9 @@ export default class UserCard {
 
   renderUserLink(containerForAppending) {
     let userId = Cookies.get('loggedInUserId');
-    let thisUser = this.user.id;
-    if (userId === thisUser) {
+    let thisUserId = this.user.id;
+    // let thisUserPermission = this.user.permission;
+    if (Cookies.get('permission') == 1 || userId === thisUserId) {
       $(containerForAppending).append(`
         <a href="profile-edit.html?id=${this.user.id}">
           <i class="fa fa-user-o fa-2x" aria-hidden="true" ></i>

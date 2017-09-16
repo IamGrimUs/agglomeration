@@ -39,6 +39,7 @@ userSchema.methods.toClient = async function() {
     departmentId: this.departmentId,
     departmentName: department ? department.name : null,
     position: this.position,
+    permission: this.permission,
     state: this.state,
     country: this.country,
     favoritePartOfDay: this.favoritePartOfDay,

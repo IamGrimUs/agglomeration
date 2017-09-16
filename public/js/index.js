@@ -154,6 +154,7 @@ function showDepartmentOptionsIndexMenu(data) {
 
 function renderStates(userState) {
   let statesArray = [
+    'Not applicable',
     'AK',
     'AL',
     'AR',
@@ -540,7 +541,7 @@ function captureUserEdit(userId) {
       },
       data: $('#profile-form').serialize(),
       success: function() {
-        //console.log('User profile updated');
+        console.log('User profile updated');
         showEditSubmitSuccess(userId);
       },
       error: function() {
@@ -689,7 +690,9 @@ function searchMenu() {
   $('#site-search-menu').on('submit', function(e) {
     e.preventDefault();
     let email = $('#searchEmail').val();
-    let name = $('#searchName').val();
+    let name = $('#searchName')
+      .val()
+      .toLowerCase();
     let [firstName, lastName] = name.split(' ');
     let departmentId = $('#departmentId').val();
     let searchTerm = '?';
@@ -706,13 +709,9 @@ function searchMenu() {
       searchTerm += `departmentId=${departmentId}`;
     }
     if (searchTerm[searchTerm.length - 1] === '&') {
-      console.log('there is  a &');
       searchTerm.substr(0, searchTerm.length - 1);
     }
-    $('#searchEmail').val('');
-    $('#searchName').val('');
-    $('#departmentId').val('');
-    //console.log(searchTerm);
+
     $.ajax({
       url: `/user/search/${searchTerm}`,
       type: 'GET',
@@ -725,8 +724,8 @@ function searchMenu() {
         showAllUsers(json);
       },
       error: function() {
-        // showSubmitError();
         console.log('error');
+        showSubmitError();
       }
     }).catch(err => {
       if (err.status === 401) {
@@ -740,7 +739,9 @@ function searchMenu() {
 function searchReset() {
   $('#reset-button').click(() => {
     getAllUsers();
-    //console.log('hello');
+    $('#searchEmail').val('');
+    $('#searchName').val('');
+    $('#departmentId').val('');
   });
 }
 
@@ -795,12 +796,22 @@ function renderProfileMenuButton() {
     `);
 }
 
+function watchForLogout() {
+  $(document).ready(() => {
+    $('.profile-menu--logout').click(() => {
+      Cookies.remove('jwt');
+      window.location = 'login.html';
+    });
+  });
+}
+
 export { getAllDepartments, renderStates, renderCountries };
 
 (function(window) {
   const entryPoints = {};
 
   entryPoints.runIndex = () => {
+    watchForLogout();
     getAllUsers();
     getAllDepartmentsIndexMenu();
     searchMenu();
