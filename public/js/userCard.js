@@ -40,41 +40,23 @@ export default class UserCard {
   }
 
   renderSingleUserProfile(containerForAppending) {
-    let biography;
-    let hobbies;
-    let favoritePartOfDay;
-    let state;
-    if (!this.user.biography) {
-      biography = 'awaiting user input...';
-    } else {
-      biography = this.user.biography;
-    }
-    if (!this.user.hobbies) {
-      hobbies = 'awaiting user input...';
-    } else {
-      hobbies = this.user.hobbies;
-    }
-    if (!this.user.favoritePartOfDay) {
-      favoritePartOfDay = 'awaiting user input...';
-    } else {
-      favoritePartOfDay = this.user.favoritePartOfDay;
-    }
-    if (this.user.state == 'Not applicable') {
-      $(containerForAppending).append(`
+    $(containerForAppending).append(`
       <section class="profile-information">
           <section class="contact-information-layout">
             <div class="flex-container">
               <div>
                 <figure style="background-image:url('img/profile/${this.user
                   .imageUrl}');background-size:cover;background-position:center center" class="profile-pic-container ${this.user.departmentName
-        .toLowerCase()
-        .split(' ', 2)[0] + '-team'}">
+      .toLowerCase()
+      .split(' ', 2)[0] + '-team'}">
                 </figure>
               </div>
               <div>
                 <h1 class="text-center">${this.user.firstName} ${this.user
-        .lastName}</h1>
-                <p class="text-center">${biography}</p>
+      .lastName}</h1>
+                <p class="text-center ${this.user.favoritePartOfDay
+                  ? ''
+                  : 'hidden'}">${this.user.biography}</p>
               </div>
               <div>
                 <p>
@@ -88,6 +70,12 @@ export default class UserCard {
                   <a href="tel:${this.user.telephone}" class="telephone">
                     ${this.user.telephone}
                   </a>
+                </p>
+                <p class="${this.user.state === 'Not applicable'
+                  ? 'hidden'
+                  : ''}">
+                  <span class="profile-category-headline">State:</span> ${this
+                    .user.state}
                 </p>
                 <p>
                   <span class="profile-category-headline">Country:</span> ${this
@@ -107,102 +95,29 @@ export default class UserCard {
                 </p>
               </div>
             </div>
-            <div class="personal-information">
+            <div class="personal-information ${this.user.favoritePartOfDay
+              ? ''
+              : 'hidden'}">
               <span class="profile-category-headline">
                 Favorite part of the day:
               </span>
               <p>
-                ${favoritePartOfDay}
+                ${this.user.favoritePartOfDay}
               </p>
             </div>
-            <div class="personal-information ${this.user.hobbies
+            <div class="personal-information  ${this.user.hobbies
               ? ''
               : 'hidden'}">
               <span class="profile-category-headline">
                 Hobbies:
               </span>
               <p>
-                ${hobbies}
+                ${this.user.hobbies}
               </p>
             </div>
           </section>
         </section>
     `);
-    } else {
-      state = this.user.state;
-      $(containerForAppending).append(`
-      <section class="profile-information">
-          <section class="contact-information-layout">
-            <div class="flex-container">
-              <div>
-                <figure style="background-image:url('img/profile/${this.user
-                  .imageUrl}');background-size:cover;background-position:center center" class="profile-pic-container ${this.user.departmentName
-        .toLowerCase()
-        .split(' ', 2)[0] + '-team'}">
-                </figure>
-              </div>
-              <div>
-                <h1 class="text-center">${this.user.firstName} ${this.user
-        .lastName}</h1>
-                <p class="text-center">${biography}</p>
-              </div>
-              <div>
-                <p>
-                  <span class="profile-category-headline">Email address:</span>
-                  <a href="mailto:${this.user.email}" class="email-address">
-                  ${this.user.email}
-                  </a>
-                </p>
-                <p>
-                  <span class="profile-category-headline">Telephone:</span>
-                  <a href="tel:${this.user.telephone}" class="telephone">
-                    ${this.user.telephone}
-                  </a>
-                </p>
-                <p>
-                  <span class="profile-category-headline ${this.user.state ===
-                  'Not applicable'
-                    ? 'hidden'
-                    : ''}">State:</span> ${state}
-                </p>
-                <p>
-                  <span class="profile-category-headline">Country:</span> ${this
-                    .user.country}
-                </p>
-              </div>
-              <div>
-                <p>
-                  <span class="profile-category-headline">
-                    Department:
-                  </span> ${this.user.departmentName}
-                </p>
-                <p>
-                  <span class="profile-category-headline">
-                    Postition title:
-                  </span> ${this.user.position}
-                </p>
-              </div>
-            </div>
-            <div class="personal-information">
-              <span class="profile-category-headline">
-                Favorite part of the day:
-              </span>
-              <p>
-                ${favoritePartOfDay}
-              </p>
-            </div>
-            <div class="personal-information">
-              <span class="profile-category-headline">
-                Hobbies:
-              </span>
-              <p>
-                ${hobbies}
-              </p>
-            </div>
-          </section>
-        </section>
-    `);
-    }
   }
 
   renderUserProfileEdit(containerForAppending) {
