@@ -9,7 +9,7 @@ export function setupDropZone(userId) {
     headers: {
       Authorization: `Bearer ${Cookies.get('jwt')}`
     },
-    accept: function(file, done) {
+    accept: function (file, done) {
       if (file.name == 'justinbieber.jpg') {
         done("Naha, you don't.");
       } else {
@@ -19,7 +19,7 @@ export function setupDropZone(userId) {
     },
     acceptedFiles: 'image/*',
     url: `/user/${userId}/photo`,
-    error: function() {
+    error: function () {
       console.log('there was an error');
     }
   };
