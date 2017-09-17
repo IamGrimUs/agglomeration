@@ -11,6 +11,9 @@
     "serverReload": "nodemon --watch app server.js",
     "dev": "npm-run-all --parallel bundle serverReload"
   },
+  "engines": {
+    "node": "8.2.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IamGrimUs/agglomeration.git"
