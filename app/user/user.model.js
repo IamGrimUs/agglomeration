@@ -26,8 +26,6 @@ userSchema.virtual('fullName').get(function() {
 
 userSchema.methods.toClient = async function() {
   let department = await getDepartment(this.departmentId);
-  //check for image url to be populated.
-
   return {
     id: this._id,
     fullName: this.fullName,

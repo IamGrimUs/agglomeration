@@ -143,7 +143,7 @@ export default class UserCard {
                   <span id="last-name-format" class="help">Format: Lastname</span>
                 </div>
                 <div>
-                  <label for="password">New Password:</label>
+                  <label for="password">Change Password:</label>
                   <input type="password" id="password" name="password" value="" title="password">
                 </div>
                 <div>

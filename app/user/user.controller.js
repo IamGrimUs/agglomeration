@@ -65,7 +65,9 @@ const searchUser = (req, res) => {
     });
 };
 
-const createNewUser = (req, res) => {
+const createNewUser = async (req, res) => {
+  let pass = await userModel.hashPassword(req.body.password);
+  console.log(pass);
   userModel
     .create({
       firstName: req.body.firstName,
@@ -80,7 +82,7 @@ const createNewUser = (req, res) => {
       favoritePartOfDay: req.body.favoritePartOfDay,
       hobbies: req.body.hobbies,
       permission: req.body.permission,
-      password: req.body.password
+      password: pass
     })
     .then(async userModel => res.status(201).json(await userModel.toClient()))
     .catch(err => {
@@ -118,7 +120,7 @@ const updateUserById = async (req, res) => {
       toUpdate[field] = req.body[field];
     }
   });
-  console.log('password:', req.body.password);
+
   if (req.body.password) {
     let pass = { password: await userModel.hashPassword(req.body.password) };
     console.log(pass);

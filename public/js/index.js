@@ -154,7 +154,6 @@ function showDepartmentOptionsIndexMenu(data) {
 
 function renderStates(userState) {
   let statesArray = [
-    'Not applicable',
     'AK',
     'AL',
     'AR',
@@ -206,9 +205,9 @@ function renderStates(userState) {
     'WV',
     'WY'
   ];
-  let renderString = `<option value="" disabled="disabled" ${userState
+  let renderString = `<option value="Not applicable"  ${userState
     ? ''
-    : 'selected'}>Please select a State</option>`;
+    : 'selected'}>Not applicable</option>`;
   for (let i = 0; i < statesArray.length; i++) {
     let option = `<option value="${statesArray[i]}" ${userState ===
     statesArray[i]
