@@ -1,6 +1,6 @@
 const userModel = require('./user.model');
 const findAllUsers = (req, res) => {
-  userModel.hashPassword('password').then(userPass => {});
+  // userModel.hashPassword('password').then(userPass => {});
   userModel
     .find()
     .then(async users => {
