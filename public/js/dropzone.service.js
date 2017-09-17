@@ -6,7 +6,7 @@ export function setupDropZone(userId) {
   Dropzone.options.profileImageDz = {
     paramName: 'profileImage', // The name that will be used to transfer the file
     maxFilesize: 1, // MB
-    resizeWidth: 200,
+    resizeWidth: 450,
     headers: {
       Authorization: `Bearer ${Cookies.get('jwt')}`
     },
