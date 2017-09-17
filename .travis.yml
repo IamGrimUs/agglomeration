@@ -4,7 +4,7 @@ services: mongodb
 deploy:
   provider: heroku
   api_key:
-    secure: HrgKqHZJgma26utTJpcpcpOF+Lnw+YJoGprTEIdx4K/rkrq96VuYUJ9kNjh4idJ0FgCdjhxSprFB366/K04ORqwdk7pNtQaz03LqzI0d9fosAvCnJz1gSUwi4WNKY7jpKTnk9v/n2IHUJ0CcE+N+JVzlmzEubB/XY5lGzMlZg17ahXks2RSTe2Sk/+wfqebxjDWVVmhjJSxXn9QzchViN77+gIbxQEH43Q4/h4r/yjYzOkfb1rTvV/f3S/FzTIrpwIswQguAM9WrZ/+GT/TmT9azHNIbnMGVQ8GPo96Rw+qL60TQJ6Ad8oVv+mm1xbsoWt/S2th3HUYyinUCxEKMJ6tzl6bS9vJ2mwOwullhtuvB8AAW2uM9l3+bTxDxJA8bIJVXMr9vbNmCm98N7d+/QKFq4sSFQAyo8Qb63YcqCehqeVBSDAEVDZGW4oveWOdO9LzdVQ7U293ckYDo58t6Cu25NSybTMo4XKkTMkvh5lXTDL/phHzcRiroTjMhrAkfIJBnXYPl0gww6xxEaYZg4pEx18HJ44b05Ub+Amc6txiAFK1/dLHvP1TSI8ogzS89PJ7+H10h/Twirz/0M+Boh1NYiSdC5zWW1eqxeqNG6LLFcgxwcH06jra1UEqbMaNK5So1/ima4okSbuMyDEl3Wb35oCfUGeCP3fVWUA1ikUg=
-  app: serene-oasis-96513
+    secure: cd68d7cf-1254-44eb-8af6-cf269781ded0
+  app: tranquil-shore-80593
   on:
     repo: IamGrimUs/agglomeration
