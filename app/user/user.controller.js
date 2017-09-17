@@ -1,10 +1,10 @@
 const userModel = require('./user.model');
 const findAllUsers = (req, res) => {
-  // userModel.hashPassword('password').then(userPass => {});
+  //userModel.hashPassword('password').then(userPass => {});
   userModel
     .find()
-    .then(async users => {
-      let promises = users.map(async user => await user.toClient());
+    .then(async (users) => {
+      let promises = users.map(async (user) => await user.toClient());
       res.json({
         users: await Promise.all(promises)
       });
@@ -19,7 +19,7 @@ const findUserById = (req, res) => {
   const userId = req.params.userId;
   userModel
     .findById(userId)
-    .then(async user => {
+    .then(async (user) => {
       res.json(await user.toClient());
     })
     .catch(err => {
@@ -53,8 +53,8 @@ const searchUser = (req, res) => {
 
   userModel
     .find(query)
-    .then(async users => {
-      let promises = users.map(async user => await user.toClient());
+    .then(async (users) => {
+      let promises = users.map(async (user) => await user.toClient());
       res.json({
         users: await Promise.all(promises)
       });
@@ -84,7 +84,7 @@ const createNewUser = async (req, res) => {
       permission: req.body.permission,
       password: pass
     })
-    .then(async userModel => res.status(201).json(await userModel.toClient()))
+    .then(async (userModel) => res.status(201).json(await userModel.toClient()))
     .catch(err => {
       console.error('err is', err);
       res.status(500).json({ message: 'Internal server error' });
