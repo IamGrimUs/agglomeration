@@ -4,12 +4,12 @@ import Cookies from 'js-cookie';
 // "myAwesomeDropzone" is the camelized version of the HTML element's ID
 export function setupDropZone(userId) {
   Dropzone.options.profileImageDz = {
-    paramName: 'profileImage',
-    maxFilesize: 1,
+    paramName: 'profileImage', // The name that will be used to transfer the file
+    maxFilesize: 1, // MB
     headers: {
       Authorization: `Bearer ${Cookies.get('jwt')}`
     },
-    accept: function (file, done) {
+    accept: function(file, done) {
       if (file.name == 'justinbieber.jpg') {
         done("Naha, you don't.");
       } else {
@@ -19,7 +19,7 @@ export function setupDropZone(userId) {
     },
     acceptedFiles: 'image/*',
     url: `/user/${userId}/photo`,
-    error: function () {
+    error: function() {
       console.log('there was an error');
     }
   };
