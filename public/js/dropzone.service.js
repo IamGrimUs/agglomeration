@@ -4,9 +4,9 @@ import Cookies from 'js-cookie';
 // "myAwesomeDropzone" is the camelized version of the HTML element's ID
 export function setupDropZone(userId) {
   Dropzone.options.profileImageDz = {
-    paramName: 'profileImage', // The name that will be used to transfer the file
-    maxFilesize: 1, // MB
-    resizeWidth: 450,
+    paramName: 'profileImage',
+    maxFilesize: 1,
+    resizeWidth: 400,
     headers: {
       Authorization: `Bearer ${Cookies.get('jwt')}`
     },
