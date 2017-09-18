@@ -1211,8 +1211,7 @@ form.user-login input {
   border: 3px solid #333;
 }
 body {
-  background-image: url(../img/sayagata-400px.png);
-  background-image: url(../img/seigaiha.png);
+  background-image: url(../img/background/sayagata-400px.png);
   background-repeat: repeat;
 }
 .error-message {
@@ -1237,4 +1236,7 @@ body {
 }
 .dropzone .dz-preview .dz-image {
   border-radius: 0.5em;
+}
+.profile-card figure {
+  max-height: 350px;
 }
