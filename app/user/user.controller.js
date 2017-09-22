@@ -1,10 +1,12 @@
+const cloudinary = require('cloudinary');
+const path = require('path');
 const userModel = require('./user.model');
 const findAllUsers = (req, res) => {
   //userModel.hashPassword('password').then(userPass => {});
   userModel
     .find()
-    .then(async (users) => {
-      let promises = users.map(async (user) => await user.toClient());
+    .then(async users => {
+      let promises = users.map(async user => await user.toClient());
       res.json({
         users: await Promise.all(promises)
       });
@@ -19,7 +21,7 @@ const findUserById = (req, res) => {
   const userId = req.params.userId;
   userModel
     .findById(userId)
-    .then(async (user) => {
+    .then(async user => {
       res.json(await user.toClient());
     })
     .catch(err => {
@@ -53,8 +55,8 @@ const searchUser = (req, res) => {
 
   userModel
     .find(query)
-    .then(async (users) => {
-      let promises = users.map(async (user) => await user.toClient());
+    .then(async users => {
+      let promises = users.map(async user => await user.toClient());
       res.json({
         users: await Promise.all(promises)
       });
@@ -84,7 +86,7 @@ const createNewUser = async (req, res) => {
       permission: req.body.permission,
       password: pass
     })
-    .then(async (userModel) => res.status(201).json(await userModel.toClient()))
+    .then(async userModel => res.status(201).json(await userModel.toClient()))
     .catch(err => {
       console.error('err is', err);
       res.status(500).json({ message: 'Internal server error' });
@@ -149,11 +151,20 @@ const deleteUserById = (req, res) => {
 };
 
 const uploadUserPhoto = (req, res) => {
-  const toUpdate = { imageUrl: req.file.filename };
-  userModel
-    .findByIdAndUpdate(req.params.userId, { $set: toUpdate })
-    .then(userModel => res.status(204).end())
-    .catch(err => res.status(500).json({ message: 'Internal server error' }));
+  const filePath = './public/img/profile/' + req.file.filename;
+  cloudinary.v2.uploader.upload(filePath, function(error, result) {
+    console.log(result);
+    if (error) {
+      console.log(error);
+      res.status(500).json({ message: 'File upload error' });
+      return;
+    }
+    const toUpdate = { imageUrl: result.secure_url };
+    userModel
+      .findByIdAndUpdate(req.params.userId, { $set: toUpdate })
+      .then(userModel => res.status(204).end())
+      .catch(err => res.status(500).json({ message: 'Internal server error' }));
+  });
 };
 
 module.exports = {

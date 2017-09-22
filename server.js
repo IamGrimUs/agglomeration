@@ -1,11 +1,17 @@
 const express = require('express');
+const cloudinary = require('cloudinary');
 const mongoose = require('mongoose');
 const userRouter = require('./app/user/user.routes');
 const departmentRouter = require('./app/department/department.routes');
 const passport = require('passport');
 const morgan = require('morgan');
 const authRouter = require('./app/auth/auth.routes');
-const { PORT, DATABASE_URL } = require('./config');
+const {
+  PORT,
+  DATABASE_URL,
+  CLOUDINARY_KEY,
+  CLOUDINARY_SECRET
+} = require('./config');
 
 const { jwtStrategy } = require('./app/auth/auth.strategies');
 
@@ -21,6 +27,12 @@ passport.use(jwtStrategy);
 app.use('/user', userRouter);
 app.use('/department', departmentRouter);
 app.use('/auth', authRouter);
+console.log(CLOUDINARY_KEY, CLOUDINARY_SECRET);
+cloudinary.config({
+  cloud_name: 'agglomeration',
+  api_key: CLOUDINARY_KEY,
+  api_secret: CLOUDINARY_SECRET
+});
 
 let server;
 

@@ -7,3 +7,5 @@ exports.TEST_DATABASE_URL =
 exports.PORT = process.env.PORT || 8080;
 exports.JWT_SECRET = 'jabawakey';
 exports.JWT_EXPIRY = process.env.JWT_EXPIRY || '1d';
+exports.CLOUDINARY_SECRET = process.env.CLOUDINARY_SECRET;
+exports.CLOUDINARY_KEY = process.env.CLOUDINARY_KEY;

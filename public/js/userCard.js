@@ -27,8 +27,8 @@ export default class UserCard {
           <p>${this.user.departmentName}</p>
         </div>
         <figure>
-          <img src="img/profile/${this.user.imageUrl}" alt="${this.user
-      .firstName} ${this.user.lastName}">
+          <img src="${this.user.imageUrl}" alt="${this.user.firstName} ${this
+      .user.lastName}">
           <figcaption>
             <p>${this.user.position}</p>
             <p>${this.user.email}</p>
@@ -45,7 +45,7 @@ export default class UserCard {
           <section class="contact-information-layout">
             <div class="flex-container">
               <div>
-                <figure style="background-image:url('img/profile/${this.user
+                <figure style="background-image:url('${this.user
                   .imageUrl}');background-size:cover;background-position:center center" class="profile-pic-container ${this.user.departmentName
       .toLowerCase()
       .split(' ', 2)[0] + '-team'}">
