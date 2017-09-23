@@ -27,7 +27,7 @@ passport.use(jwtStrategy);
 app.use('/user', userRouter);
 app.use('/department', departmentRouter);
 app.use('/auth', authRouter);
-console.log(CLOUDINARY_KEY, CLOUDINARY_SECRET);
+
 cloudinary.config({
   cloud_name: 'agglomeration',
   api_key: CLOUDINARY_KEY,
