@@ -1240,7 +1240,7 @@ body {
 .profile-card figure {
   max-height: 350px;
 }
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 500px) {
   .profile-card figure {
     max-height: 550px;
   }
