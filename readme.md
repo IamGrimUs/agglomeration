@@ -21,6 +21,12 @@ User privilages:
 Admin users have enhanced privialges and site access. Admin users can view, create, edit, & delete all other user profiles and department categories.
 Non Admin users have privailates to view other users and edit their user profile.
 
+Sample users for app testing:
+Admin account: ffuego@app.com
+     password: password
+
+Non Admin account: mturner@app.com
+         password: password
 
 ## Built With
 

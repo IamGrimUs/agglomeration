@@ -42,7 +42,9 @@ userSchema.methods.toClient = async function() {
     country: this.country,
     favoritePartOfDay: this.favoritePartOfDay,
     hobbies: this.hobbies,
-    imageUrl: this.imageUrl || 'generic-profile.png'
+    imageUrl:
+      this.imageUrl ||
+      'https://res.cloudinary.com/agglomeration/image/upload/v1506310162/dyv6qvbkqtb1wunfdv6q.png'
   };
 };
 
