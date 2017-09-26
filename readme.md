@@ -29,10 +29,6 @@ Admin account: ffuego@app.com password: password
 Non Admin account: mturner@app.com
          password: password
 
-![Screen shot of app preloading screen](/img/screen01.png?raw=true "Screen 0")
-![Screen shot of welcome message](/img/screen02.png?raw=true "Screen 1")
-![Screen shot of welcome message](/img/screen04.png?raw=true "Screen 2")
-![Screen shot of background image and control panel](/img/screen03.png?raw=true "Screen 3")
 ## Built With
 
 * [MongoDB](https://www.mongodb.com/) - Dependency Management
