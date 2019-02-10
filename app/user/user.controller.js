@@ -1,6 +1,7 @@
 const cloudinary = require('cloudinary');
 const path = require('path');
 const userModel = require('./user.model');
+
 const findAllUsers = (req, res) => {
   //userModel.hashPassword('password').then(userPass => {});
   userModel
@@ -147,7 +148,7 @@ const deleteUserById = (req, res) => {
   userModel
     .findByIdAndRemove({ _id: req.params.userId })
     .then(() => res.status(204).end())
-    .catch(err => res.status(500).json({ message: 'Interanl server error' }));
+    .catch(err => res.status(500).json({ message: 'Internal server error' }));
 };
 
 const uploadUserPhoto = (req, res) => {

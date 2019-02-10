@@ -3,8 +3,9 @@ const express = require('express');
 const passport = require('passport');
 const multer = require('multer');
 
-const userController = require('./user.controller');
 const { jwtStrategy } = require('../auth/auth.strategies');
+
+const userController = require('./user.controller');
 const jsonParser = bodyParser.json();
 const router = express.Router();
 
@@ -25,16 +26,19 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   userController.searchUser
 );
+
 router.get(
   '/',
   passport.authenticate('jwt', { session: false }),
   userController.findAllUsers
 );
+
 router.get(
   '/:userId',
   passport.authenticate('jwt', { session: false }),
   userController.findUserById
 );
+
 router
   .route('/:userId/photo')
   .all(upload.single('profileImage'))
@@ -42,6 +46,7 @@ router
     passport.authenticate('jwt', { session: false }),
     userController.uploadUserPhoto
   );
+
 router.post(
   '/',
   passport.authenticate('jwt', { session: false }),
@@ -53,6 +58,7 @@ router.put(
   passport.authenticate('jwt', { session: false }),
   userController.updateUserById
 );
+
 router.delete(
   '/:userId',
   passport.authenticate('jwt', { session: false }),
